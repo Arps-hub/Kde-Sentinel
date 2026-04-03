@@ -1,158 +1,133 @@
-# KDE Sentinel — Security Requirements Change Detector
+# KDE Sentinel
 
-A command-line tool that automatically detects changes between two CIS security requirements documents and triggers a Kubernetes compliance scan using Kubescape.
+Security requirements change detection for CIS-style PDF documents with targeted Kubernetes compliance scanning.
 
-Given two PDF documents, it extracts security requirements using an LLM, compares them, maps the differences to Kubescape controls, and produces a CSV compliance report.
+This project compares two security requirements documents, extracts key requirements with an LLM, identifies the differences, maps those differences to Kubescape controls, and produces a CSV scan report.
 
-## Team Members
+## Course Project
 
-| Name | University Email |
-|------|-----------------|
-| Ayush Patel | ayp0006@auburn.edu |
-| Ryan Lunsford | rtl0019@auburn.edu |
+- Course: `COMP 5700/6700`
+- Institution: `Auburn University`
+- Team: `Ayush Patel`, `Ryan Lunsford`
 
-**Course:** COMP 5700/6700 — Auburn University
+## What The Project Does
 
----
+1. Extracts Key Data Elements (KDEs) from each PDF using `google/gemma-3-1b-it`
+2. Saves the extracted requirements as YAML
+3. Compares the two YAML outputs for changed elements and changed requirements
+4. Maps detected changes to Kubescape controls
+5. Runs a compliance scan and exports the results to CSV
 
-## How It Works
+## Pipeline Overview
 
+```text
+PDF 1 --> extractor --> YAML 1 --+
+                                 +--> comparator --> controls --> Kubescape --> CSV
+PDF 2 --> extractor --> YAML 2 --+
 ```
-cis-r1.pdf ──► LLM (Gemma-3-1B) ──► cis-r1-kdes.yaml ──┐
-                                                          ├──► diff ──► controls.txt ──► Kubescape ──► results.csv
-cis-r2.pdf ──► LLM (Gemma-3-1B) ──► cis-r2-kdes.yaml ──┘
+
+## Repository Layout
+
+```text
+kde-sentinel/
+|-- .github/workflows/     CI configuration
+|-- assets/                Scan input assets such as project-yamls.zip
+|-- src/                   Application modules
+|-- tests/                 Unit tests and fixtures
+|-- cis-r1.pdf             Sample input PDF
+|-- cis-r2.pdf             Sample input PDF
+|-- cis-r3.pdf             Sample input PDF
+|-- cis-r4.pdf             Sample input PDF
+|-- main.py                CLI entry point
+|-- run_all_combinations.py
+|-- build_executable.py
+|-- generate_report.py
+|-- PROMPT.md
+|-- requirements.txt
+`-- README.md
 ```
 
-1. **Task-1 — Extract:** Loads each PDF with PyMuPDF and prompts `google/gemma-3-1b-it` to identify 10 Key Data Elements (KDEs) — access control, authentication, encryption, etc. Supports zero-shot, few-shot, and chain-of-thought prompting.
-2. **Task-2 — Compare:** Diffs the two YAML outputs by element names and requirements text.
-3. **Task-3 — Scan:** Maps differing elements to Kubescape control IDs and runs a targeted scan against Kubernetes manifests. If no differences are found, a full scan runs.
-4. **Task-4 — Test:** 31 unit tests with mocked LLM and Kubescape. CI runs on every push via GitHub Actions.
+## Why The PDFs Are In The Root Folder
 
----
+The four `cis-r*.pdf` files are included at the repository root intentionally so the required CLI commands remain simple and match the project instructions exactly:
+
+```bash
+python main.py cis-r1.pdf cis-r2.pdf
+```
 
 ## Quick Start
 
 ```bash
 # 1. Create and activate a virtual environment
-python3 -m venv venv
-source venv/bin/activate          # Linux/Mac
-# OR: venv\Scripts\activate       # Windows
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Linux or macOS
+source venv/bin/activate
 
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Authenticate with HuggingFace (Gemma-3 is a gated model)
-huggingface-cli login
+# 3. Authenticate with Hugging Face
+hf auth login
 
 # 4. Install Kubescape
-# Linux/Mac:
-curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash
 # Windows:
 winget install kubescape
 
-# 5. Run
+# 5. Run the project
 python main.py cis-r1.pdf cis-r2.pdf
 ```
 
-### Options
+## Command-Line Usage
 
-```
-python main.py <pdf1> <pdf2> [--prompt-strategy {zero_shot,few_shot,chain_of_thought}]
-                              [--zip assets/project-yamls.zip]
-                              [--output-dir outputs/]
-                              [--kubescape-path C:\full\path\to\kubescape.exe]
-```
-
-### Nine Required Input Combinations
-
-```bash
-python main.py cis-r1.pdf cis-r1.pdf
-python main.py cis-r1.pdf cis-r2.pdf
-python main.py cis-r1.pdf cis-r3.pdf
-python main.py cis-r1.pdf cis-r4.pdf
-python main.py cis-r2.pdf cis-r2.pdf
-python main.py cis-r2.pdf cis-r3.pdf
-python main.py cis-r2.pdf cis-r4.pdf
-python main.py cis-r3.pdf cis-r3.pdf
-python main.py cis-r3.pdf cis-r4.pdf
+```text
+python main.py <pdf1> <pdf2>
+               [--prompt-strategy {zero_shot,few_shot,chain_of_thought}]
+               [--zip assets/project-yamls.zip]
+               [--output-dir outputs/]
+               [--kubescape-path C:\full\path\to\kubescape.exe]
 ```
 
-Or run all nine at once:
+## Running All Required Input Combinations
 
 ```bash
 python run_all_combinations.py
 ```
 
-Results for each combination are saved to `outputs/<pdf1>_vs_<pdf2>/`.
+This creates per-combination output folders under `outputs/`.
 
----
-
-## Running Tests
+## Tests
 
 ```bash
 pytest tests/ -v
 ```
 
-31 tests covering all three modules. The LLM pipeline and Kubescape subprocess are mocked so tests run in under a second without GPU or network access.
-
-### Git Hook Setup
-
-```bash
-python setup_git_hooks.py
-```
-
-Installs a pre-commit hook that runs tests before every commit, and a `git stat` alias that runs tests then prints status.
-
----
+The test suite covers the extractor, comparator, executor, and shared fixtures. LLM and Kubescape interactions are mocked for fast local runs and CI execution.
 
 ## Output Files
 
-All outputs are written to `outputs/`:
+The application writes the following files to `outputs/`:
 
-| File | Description |
-|------|-------------|
-| `<stem>-kdes.yaml` | Extracted KDEs per PDF (cached — reused on re-runs) |
-| `llm_outputs.txt` | Every LLM prompt and raw response |
-| `differing_elements.txt` | KDE names present in one doc but not the other |
-| `differing_requirements.txt` | Requirements that differ, one `NAME,REQU` per line |
-| `controls.txt` | Kubescape control IDs selected for scanning |
-| `kubescape_results.csv` | FilePath, Severity, Control name, Failed resources, All Resources, Compliance score |
+| File | Purpose |
+|---|---|
+| `<stem>-kdes.yaml` | Extracted KDE data for each PDF |
+| `llm_outputs.txt` | Logged prompts and model outputs |
+| `differing_elements.txt` | KDE names present in one document but not the other |
+| `differing_requirements.txt` | Requirement-level differences |
+| `controls.txt` | Kubescape controls selected for the scan |
+| `kubescape_results.csv` | Final scan results |
 
----
-
-## Building a Standalone Binary
+## Building The Executable
 
 ```bash
 python build_executable.py
-# Binary: dist/project6700 (Linux/Mac) or dist/project6700.exe (Windows)
 ```
 
-> The HuggingFace model (~1 GB) downloads on first run to `~/.cache/huggingface/`.
+## Notes
 
----
-
-## Project Structure
-
-```
-kde-sentinel/
-├── src/
-│   ├── extractor.py      # Task-1: PDF → LLM → YAML
-│   ├── comparator.py     # Task-2: YAML diff → TEXT
-│   ├── executor.py       # Task-3: controls mapping → Kubescape → CSV
-│   └── utils.py          # Shared I/O helpers and sentinel constants
-├── tests/
-│   ├── conftest.py
-│   ├── test_extractor.py
-│   ├── test_comparator.py
-│   └── test_executor.py
-├── assets/
-│   └── project-yamls.zip
-├── .github/workflows/ci.yml
-├── main.py
-├── run_all_combinations.py
-├── build_executable.py
-├── setup_git_hooks.py
-├── PROMPT.md
-├── requirements.txt
-└── README.md
-```
+- The Gemma model is gated and requires a valid Hugging Face login.
+- The first model run may download model artifacts locally.
+- Kubescape can be passed explicitly with `--kubescape-path` if it is installed but not available on `PATH`.
