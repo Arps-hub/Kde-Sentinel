@@ -1,0 +1,22 @@
+# Core ML
+torch>=2.2.0
+transformers>=4.40.0
+accelerate>=0.28.0
+huggingface-hub>=0.22.0
+
+# PDF parsing
+PyMuPDF>=1.24.0
+
+# Data
+pandas>=2.2.0
+pyyaml>=6.0.1
+
+# Testing
+pytest>=8.0.0
+pytest-cov>=5.0.0
+
+# Fixture PDF generation (used only in tests/conftest.py)
+reportlab>=4.1.0
+
+# Binary packaging (dev only)
+pyinstaller>=6.5.0

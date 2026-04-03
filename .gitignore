@@ -1,0 +1,23 @@
+outputs/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+dist/
+build/
+*.spec
+*.egg-info/
+.venv/
+comp5700-venv/
+*.egg
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings (may contain tokens/secrets)
+.claude/
+
+# Generated / extracted artifacts
+project-yamls/
+project_overview.pdf
+test_out.txt
+kubescape.exe.json
