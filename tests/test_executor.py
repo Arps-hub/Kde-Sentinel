@@ -125,16 +125,44 @@ def test_check_kubescape_installed_ok():
     from src.executor import check_kubescape_installed
     mock_result = MagicMock()
     mock_result.returncode = 0
-    with patch("subprocess.run", return_value=mock_result):
+    with patch("src.executor._resolve_kubescape_binary", return_value="C:\\tools\\kubescape.exe"), \
+         patch("subprocess.run", return_value=mock_result):
         assert check_kubescape_installed() is True
 
 
 def test_check_kubescape_not_found():
     """check_kubescape_installed raises RuntimeError when binary missing."""
     from src.executor import check_kubescape_installed
-    with patch("subprocess.run", side_effect=FileNotFoundError):
-        with pytest.raises(RuntimeError, match="not installed"):
+    with patch("src.executor._resolve_kubescape_binary", side_effect=RuntimeError("could not be found")):
+        with pytest.raises(RuntimeError, match="could not be found"):
             check_kubescape_installed()
+
+
+def test_check_kubescape_permission_denied():
+    """check_kubescape_installed reports permission errors clearly."""
+    from src.executor import check_kubescape_installed
+    with patch("src.executor._resolve_kubescape_binary", return_value="C:\\tools\\kubescape.exe"), \
+         patch("subprocess.run", side_effect=PermissionError):
+        with pytest.raises(RuntimeError, match="permission denied"):
+            check_kubescape_installed()
+
+
+def test_find_kubescape_binary_prefers_explicit_path(tmp_path):
+    """An explicit kubescape path should win over all auto-discovery paths."""
+    from src.executor import _find_kubescape_binary
+    exe_path = tmp_path / "kubescape.exe"
+    exe_path.write_text("fake exe")
+    assert _find_kubescape_binary(str(exe_path)) == str(exe_path.resolve())
+
+
+def test_find_kubescape_binary_uses_env_var(tmp_path, monkeypatch):
+    """KUBESCAPE_PATH should be used when kubescape is not on PATH."""
+    from src.executor import _find_kubescape_binary
+    exe_path = tmp_path / "kubescape.exe"
+    exe_path.write_text("fake exe")
+    monkeypatch.setenv("KUBESCAPE_PATH", str(exe_path))
+    with patch("src.executor.shutil.which", return_value=None):
+        assert _find_kubescape_binary() == str(exe_path.resolve())
 
 
 # ---------------------------------------------------------------------------
@@ -151,6 +179,7 @@ def test_run_kubescape_mocked(tmp_path):
     mock_result.stdout = KUBESCAPE_JSON
 
     with patch("src.executor.check_kubescape_installed", return_value=True), \
+         patch("src.executor._resolve_kubescape_binary", return_value="C:\\tools\\kubescape.exe"), \
          patch("subprocess.run", return_value=mock_result) as mock_run:
         output = run_kubescape(zip_path, ["C-0034", "C-0036"])
 
@@ -225,6 +254,7 @@ def test_run_executor_integration(tmp_path):
     mock_result.stdout = KUBESCAPE_JSON
 
     with patch("src.executor.check_kubescape_installed", return_value=True), \
+         patch("src.executor._resolve_kubescape_binary", return_value="C:\\tools\\kubescape.exe"), \
          patch("subprocess.run", return_value=mock_result):
         df = run_executor(elements_txt, reqs_txt, zip_path, out_csv, controls_txt)
 

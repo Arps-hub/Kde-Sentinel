@@ -60,6 +60,7 @@ python main.py cis-r1.pdf cis-r2.pdf
 python main.py <pdf1> <pdf2> [--prompt-strategy {zero_shot,few_shot,chain_of_thought}]
                               [--zip assets/project-yamls.zip]
                               [--output-dir outputs/]
+                              [--kubescape-path C:\full\path\to\kubescape.exe]
 ```
 
 ### Nine Required Input Combinations

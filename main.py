@@ -47,6 +47,11 @@ def parse_args():
         default="outputs",
         help="Directory for all output files (default: outputs/).",
     )
+    parser.add_argument(
+        "--kubescape-path",
+        default=None,
+        help="Optional full path to the kubescape executable.",
+    )
     return parser.parse_args()
 
 
@@ -101,11 +106,15 @@ def main():
             zip_path=args.zip,
             out_csv=out_csv,
             controls_txt=controls_txt,
+            kubescape_path=args.kubescape_path,
         )
         print(f"      -> {out_csv}")
     except RuntimeError as exc:
         print(f"[WARNING] Kubescape step failed: {exc}", file=sys.stderr)
-        print("          Skipping scan. Install Kubescape to enable this step.")
+        print(
+            "          Skipping scan. Install Kubescape, add it to PATH, or pass "
+            "--kubescape-path to enable this step."
+        )
         df = None
 
     print("[5/5] Done.")

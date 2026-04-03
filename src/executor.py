@@ -2,16 +2,17 @@
 
 import json
 import os
+import shutil
 import subprocess
 
 import pandas as pd
 
 from src.utils import (
-    write_text,
-    validate_file_exists,
-    validate_path_exists,
     NO_ELEMENT_DIFF,
     NO_REQ_DIFF,
+    validate_file_exists,
+    validate_path_exists,
+    write_text,
 )
 
 # ---------------------------------------------------------------------------
@@ -20,17 +21,19 @@ from src.utils import (
 # Full control list: https://kubescape.io/docs/controls/
 # ---------------------------------------------------------------------------
 KUBESCAPE_CONTROL_MAP: dict = {
-    "access_control":         ["C-0036", "C-0056", "C-0058"],
-    "authentication":         ["C-0036", "C-0057", "C-0221"],
-    "authorization":          ["C-0036", "C-0056", "C-0041"],
-    "data_protection":        ["C-0034", "C-0087"],
-    "encryption":             ["C-0034", "C-0087", "C-0096"],
+    "access_control": ["C-0036", "C-0056", "C-0058"],
+    "authentication": ["C-0036", "C-0057", "C-0221"],
+    "authorization": ["C-0036", "C-0056", "C-0041"],
+    "data_protection": ["C-0034", "C-0087"],
+    "encryption": ["C-0034", "C-0087", "C-0096"],
     "logging_and_monitoring": ["C-0009", "C-0015", "C-0048"],
-    "network_security":       ["C-0044", "C-0065", "C-0260"],
-    "patch_management":       ["C-0078", "C-0086"],
-    "privileged_access":      ["C-0036", "C-0042", "C-0055"],
+    "network_security": ["C-0044", "C-0065", "C-0260"],
+    "patch_management": ["C-0078", "C-0086"],
+    "privileged_access": ["C-0036", "C-0042", "C-0055"],
     "vulnerability_management": ["C-0078", "C-0080", "C-0086"],
 }
+
+KUBESCAPE_PATH_ENV_VAR = "KUBESCAPE_PATH"
 
 
 # ---------------------------------------------------------------------------
@@ -38,19 +41,7 @@ KUBESCAPE_CONTROL_MAP: dict = {
 # ---------------------------------------------------------------------------
 
 def read_differing_elements(path: str) -> list:
-    """Read the element-names diff TEXT file from Task-2.
-
-    Parameters
-    ----------
-    path : str
-        Path to the file written by comparator.write_differing_elements().
-
-    Returns
-    -------
-    list[str]
-        List of differing element names, or an empty list when the file
-        contains the "NO DIFFERENCES" sentinel.
-    """
+    """Read the element-names diff TEXT file from Task-2."""
     validate_file_exists(path)
     with open(path, "r", encoding="utf-8") as f:
         content = f.read().strip()
@@ -60,23 +51,13 @@ def read_differing_elements(path: str) -> list:
 
 
 def read_differing_requirements(path: str) -> list:
-    """Read the requirements diff TEXT file from Task-2.
-
-    Parameters
-    ----------
-    path : str
-        Path to the file written by comparator.write_differing_requirements().
-
-    Returns
-    -------
-    list[tuple[str, str]]
-        List of (element_name, requirement_text) tuples.
-    """
+    """Read the requirements diff TEXT file from Task-2."""
     validate_file_exists(path)
     with open(path, "r", encoding="utf-8") as f:
         content = f.read().strip()
     if content == NO_REQ_DIFF:
         return []
+
     result = []
     for line in content.splitlines():
         line = line.strip()
@@ -95,19 +76,7 @@ def read_differing_requirements(path: str) -> list:
 # ---------------------------------------------------------------------------
 
 def map_to_controls(elements: list) -> list:
-    """Map differing element names to Kubescape control IDs.
-
-    Parameters
-    ----------
-    elements : list[str]
-        List of element names (from read_differing_elements or derived from
-        read_differing_requirements).
-
-    Returns
-    -------
-    list[str]
-        Deduplicated, sorted list of Kubescape control IDs.
-    """
+    """Map differing element names to Kubescape control IDs."""
     controls = set()
     for elem in elements:
         key = elem.strip().lower().replace(" ", "_").replace("-", "_")
@@ -115,10 +84,9 @@ def map_to_controls(elements: list) -> list:
         if mapped:
             controls.update(mapped)
         else:
-            # Fuzzy fallback: partial match on known keys
-            for k, v in KUBESCAPE_CONTROL_MAP.items():
-                if k in key or key in k:
-                    controls.update(v)
+            for known_key, known_controls in KUBESCAPE_CONTROL_MAP.items():
+                if known_key in key or key in known_key:
+                    controls.update(known_controls)
     return sorted(controls)
 
 
@@ -126,50 +94,77 @@ def map_to_controls(elements: list) -> list:
 # 3. Kubescape runner
 # ---------------------------------------------------------------------------
 
-def _find_kubescape_binary() -> str:
-    """Return the path to the kubescape binary.
+def _normalize_kubescape_path(path: str) -> str:
+    """Return a normalized absolute path for a kubescape candidate."""
+    return os.path.abspath(os.path.expandvars(os.path.expanduser(path)))
 
-    Search order:
-    1. System PATH
-    2. Project root directory (place kubescape / kubescape.exe next to main.py)
-    3. WinGet packages directory — scans all sub-folders named *kubescape* so it
-       works regardless of the package hash suffix in the folder name.
-    """
-    import shutil
 
-    # 1. Check PATH
+def _iter_kubescape_candidates(kubescape_path: str = None) -> list[str]:
+    """Return unique kubescape candidate paths in lookup order."""
+    candidates: list[str] = []
+
+    def add(path: str) -> None:
+        if not path:
+            return
+        normalized = _normalize_kubescape_path(path)
+        if normalized not in candidates:
+            candidates.append(normalized)
+
+    add(kubescape_path)
+    add(os.environ.get(KUBESCAPE_PATH_ENV_VAR))
+
     found = shutil.which("kubescape")
     if found:
-        return found
+        add(found)
 
-    # 2. Check project root
     project_root = os.path.dirname(os.path.dirname(__file__))
-    for name in ("kubescape", "kubescape.exe"):
-        local = os.path.join(project_root, name)
-        if os.path.isfile(local):
-            return local
+    add(os.path.join(project_root, "kubescape.exe"))
+    add(os.path.join(project_root, "kubescape"))
 
-    # 3. WinGet packages directory (Windows) — dynamic scan, no hardcoded hash
-    winget_base = os.path.expandvars(r"%LOCALAPPDATA%\Microsoft\WinGet\Packages")
-    if os.path.isdir(winget_base):
-        for entry in os.listdir(winget_base):
-            if "kubescape" in entry.lower():
-                candidate = os.path.join(winget_base, entry, "kubescape.exe")
-                if os.path.isfile(candidate):
-                    return candidate
+    local_app_data = os.environ.get("LOCALAPPDATA")
+    if local_app_data:
+        add(os.path.join(local_app_data, "Microsoft", "WinGet", "Links", "kubescape.exe"))
+        add(os.path.join(local_app_data, "Microsoft", "WindowsApps", "kubescape.exe"))
 
-    return "kubescape"  # fall back — will fail with a clear error message
+        winget_base = os.path.join(local_app_data, "Microsoft", "WinGet", "Packages")
+        if os.path.isdir(winget_base):
+            for entry in os.listdir(winget_base):
+                if "kubescape" in entry.lower():
+                    add(os.path.join(winget_base, entry, "kubescape.exe"))
+
+    program_files = os.environ.get("ProgramFiles")
+    if program_files:
+        add(os.path.join(program_files, "Kubescape", "kubescape.exe"))
+
+    return candidates
 
 
-def check_kubescape_installed() -> bool:
-    """Return True if the kubescape binary is on PATH and responds to version.
+def _find_kubescape_binary(kubescape_path: str = None) -> str | None:
+    """Return the first existing kubescape binary path, if any."""
+    for candidate in _iter_kubescape_candidates(kubescape_path):
+        if os.path.isfile(candidate):
+            return candidate
+    return None
 
-    Raises
-    ------
-    RuntimeError
-        If kubescape is not found or does not respond.
-    """
-    binary = _find_kubescape_binary()
+
+def _resolve_kubescape_binary(kubescape_path: str = None) -> str:
+    """Resolve kubescape to a concrete executable path or raise a helpful error."""
+    binary = _find_kubescape_binary(kubescape_path)
+    if binary:
+        return binary
+
+    checked = "\n".join(f"  - {path}" for path in _iter_kubescape_candidates(kubescape_path))
+    checked_block = f"\nChecked locations:\n{checked}" if checked else ""
+    raise RuntimeError(
+        "Kubescape executable could not be found.\n"
+        "Fix this by either adding kubescape to PATH, passing --kubescape-path, "
+        f"or setting {KUBESCAPE_PATH_ENV_VAR}.{checked_block}"
+    )
+
+
+def check_kubescape_installed(kubescape_path: str = None) -> bool:
+    """Return True if the kubescape binary responds to `version`."""
+    binary = _resolve_kubescape_binary(kubescape_path)
     try:
         result = subprocess.run(
             [binary, "version"],
@@ -177,60 +172,55 @@ def check_kubescape_installed() -> bool:
             text=True,
             timeout=15,
         )
-        if result.returncode == 0:
-            return True
+    except PermissionError as exc:
         raise RuntimeError(
-            f"kubescape returned exit code {result.returncode}: {result.stderr}"
-        )
+            f"Kubescape was found at '{binary}' but could not be executed due to a "
+            "permission denied error. Try launching the same executable from a normal "
+            "terminal, or pass a different binary with --kubescape-path."
+        ) from exc
     except FileNotFoundError as exc:
         raise RuntimeError(
-            "Kubescape is not installed or not on PATH.\n"
-            "Install on Linux/Mac: "
-            "curl -s https://raw.githubusercontent.com/kubescape/kubescape/master/install.sh | /bin/bash\n"
-            "Install on Windows: winget install kubescape  OR  choco install kubescape"
+            f"Kubescape was resolved to '{binary}' but the executable could not be "
+            "started. Reinstall kubescape or pass a valid binary with --kubescape-path."
         ) from exc
+
+    if result.returncode == 0:
+        return True
+
+    raise RuntimeError(
+        f"Kubescape was found at '{binary}' but returned exit code {result.returncode}.\n"
+        f"stdout: {result.stdout}\nstderr: {result.stderr}"
+    )
 
 
 def _resolve_scan_path(zip_path: str) -> str:
     """If zip_path is a .zip, extract it and return the path to scan."""
     import zipfile
+
     if not zip_path.lower().endswith(".zip"):
         return zip_path
-    extract_dir = zip_path[:-4]  # strip .zip
+
+    extract_dir = zip_path[:-4]
     if not os.path.isdir(extract_dir):
         with zipfile.ZipFile(zip_path, "r") as zf:
             zf.extractall(extract_dir)
     return extract_dir
 
 
-def run_kubescape(zip_path: str, controls: list) -> str:
-    """Execute Kubescape and return the raw JSON output string.
-
-    Parameters
-    ----------
-    zip_path : str
-        Path to project-yamls.zip (or an unpacked directory).
-    controls : list[str]
-        List of control IDs to scan. If empty, all controls are scanned.
-
-    Returns
-    -------
-    str
-        Raw JSON string from kubescape stdout.
-
-    Raises
-    ------
-    RuntimeError
-        If Kubescape fails or is not installed.
-    """
-    check_kubescape_installed()
+def run_kubescape(zip_path: str, controls: list, kubescape_path: str = None) -> str:
+    """Execute Kubescape and return the raw JSON output string."""
+    check_kubescape_installed(kubescape_path)
     validate_path_exists(zip_path)
-    binary = _find_kubescape_binary()
+    binary = _resolve_kubescape_binary(kubescape_path)
     scan_path = _resolve_scan_path(zip_path)
 
     if controls:
         cmd = [binary, "scan", "control"] + controls + [
-            scan_path, "--format", "json", "--logger", "warning"
+            scan_path,
+            "--format",
+            "json",
+            "--logger",
+            "warning",
         ]
     else:
         cmd = [binary, "scan", scan_path, "--format", "json", "--logger", "warning"]
@@ -242,20 +232,19 @@ def run_kubescape(zip_path: str, controls: list) -> str:
         timeout=300,
     )
 
-    if result.returncode not in (0, 1):  # kubescape exits 1 when controls fail
+    if result.returncode not in (0, 1):
         raise RuntimeError(
             f"Kubescape exited with code {result.returncode}.\n"
             f"stderr: {result.stderr}"
         )
 
-    # Kubescape v4 outputs one JSON line followed by a plain-text summary line.
-    # Extract only the first line that starts with '{'.
     json_line = ""
     for line in result.stdout.splitlines():
         line = line.strip()
         if line.startswith("{"):
             json_line = line
             break
+
     if not json_line:
         raise RuntimeError(
             "Kubescape produced no JSON output.\n"
@@ -269,20 +258,7 @@ def run_kubescape(zip_path: str, controls: list) -> str:
 # ---------------------------------------------------------------------------
 
 def parse_kubescape_output(raw_json: str) -> pd.DataFrame:
-    """Parse Kubescape v4 JSON output into a pandas DataFrame.
-
-    Parameters
-    ----------
-    raw_json : str
-        JSON string returned by run_kubescape().
-
-    Returns
-    -------
-    pd.DataFrame
-        Columns: FilePath, Severity, Control name,
-                 Failed resources, All Resources, Compliance score.
-    """
-    # Kubescape v4 may emit one JSON object per line; take the first valid one.
+    """Parse Kubescape v4 JSON output into a pandas DataFrame."""
     data = None
     for line in raw_json.splitlines():
         line = line.strip()
@@ -293,11 +269,10 @@ def parse_kubescape_output(raw_json: str) -> pd.DataFrame:
             except json.JSONDecodeError:
                 continue
     if data is None:
-        data = json.loads(raw_json)  # fallback: try full string
+        data = json.loads(raw_json)
 
     rows = []
 
-    # Build resource_id → file_path lookup from top-level "resources"
     resource_path: dict = {}
     for res in data.get("resources", []):
         rid = res.get("resourceID", "")
@@ -305,14 +280,11 @@ def parse_kubescape_output(raw_json: str) -> pd.DataFrame:
         if rid and rel:
             resource_path[rid] = rel
 
-    # Build per-control summary from summaryDetails.controls
     summary_controls: dict = data.get("summaryDetails", {}).get("controls", {})
-
-    # results: list of {resourceID, controls: [{controlID, name, status, severity}]}
     results = data.get("results", [])
 
-    # Index failed resource paths by control ID
     from collections import defaultdict
+
     failed_paths: dict = defaultdict(list)
     for entry in results:
         rid = entry.get("resourceID", "")
@@ -326,7 +298,6 @@ def parse_kubescape_output(raw_json: str) -> pd.DataFrame:
             if status_val == "failed":
                 failed_paths[ctrl.get("controlID", "")].append(fpath)
 
-    # One row per (control, failed file)
     for ctrl_id, ctrl_info in summary_controls.items():
         control_name = ctrl_info.get("name", ctrl_id)
         severity = ctrl_info.get("severity", "")
@@ -338,35 +309,41 @@ def parse_kubescape_output(raw_json: str) -> pd.DataFrame:
         paths = failed_paths.get(ctrl_id, [])
         if paths:
             for fp in paths:
-                rows.append({
-                    "FilePath": fp,
+                rows.append(
+                    {
+                        "FilePath": fp,
+                        "Severity": severity,
+                        "Control name": control_name,
+                        "Failed resources": failed_count,
+                        "All Resources": all_count,
+                        "Compliance score": compliance,
+                    }
+                )
+        else:
+            rows.append(
+                {
+                    "FilePath": "",
                     "Severity": severity,
                     "Control name": control_name,
                     "Failed resources": failed_count,
                     "All Resources": all_count,
                     "Compliance score": compliance,
-                })
-        else:
-            rows.append({
-                "FilePath": "",
-                "Severity": severity,
-                "Control name": control_name,
-                "Failed resources": failed_count,
-                "All Resources": all_count,
-                "Compliance score": compliance,
-            })
+                }
+            )
 
     if not rows:
-        rows.append({
-            "FilePath": "",
-            "Severity": "",
-            "Control name": "",
-            "Failed resources": 0,
-            "All Resources": 0,
-            "Compliance score": 0.0,
-        })
+        rows.append(
+            {
+                "FilePath": "",
+                "Severity": "",
+                "Control name": "",
+                "Failed resources": 0,
+                "All Resources": 0,
+                "Compliance score": 0.0,
+            }
+        )
 
-    df = pd.DataFrame(
+    return pd.DataFrame(
         rows,
         columns=[
             "FilePath",
@@ -377,7 +354,6 @@ def parse_kubescape_output(raw_json: str) -> pd.DataFrame:
             "Compliance score",
         ],
     )
-    return df
 
 
 # ---------------------------------------------------------------------------
@@ -385,16 +361,9 @@ def parse_kubescape_output(raw_json: str) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 def save_results_csv(df: pd.DataFrame, path: str) -> None:
-    """Write the scan results DataFrame to a CSV file.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Output of parse_kubescape_output().
-    path : str
-        Destination CSV file path.
-    """
+    """Write the scan results DataFrame to a CSV file."""
     from src.utils import ensure_dir
+
     ensure_dir(os.path.dirname(path) or ".")
     df.to_csv(path, index=False)
 
@@ -409,42 +378,22 @@ def run_executor(
     zip_path: str,
     out_csv: str,
     controls_txt: str = None,
+    kubescape_path: str = None,
 ) -> pd.DataFrame:
-    """Full Task-3 pipeline: read diffs → map controls → scan → save CSV.
-
-    Parameters
-    ----------
-    elements_txt : str
-        Path to the element-names diff TEXT file (Task-2 output).
-    reqs_txt : str
-        Path to the requirements diff TEXT file (Task-2 output).
-    zip_path : str
-        Path to project-yamls.zip.
-    out_csv : str
-        Destination CSV path.
-    controls_txt : str, optional
-        Path where the resolved control IDs will be written (TEXT file).
-
-    Returns
-    -------
-    pd.DataFrame
-        Scan results.
-    """
+    """Full Task-3 pipeline: read diffs, map controls, scan, and save CSV."""
     elements = read_differing_elements(elements_txt)
     req_tuples = read_differing_requirements(reqs_txt)
 
-    # Combine element names from both sources
-    all_elements = list(set(elements + [t[0] for t in req_tuples]))
+    all_elements = list(set(elements + [item[0] for item in req_tuples]))
     controls = map_to_controls(all_elements)
 
-    # Write controls TEXT file
     if controls_txt:
         if not controls:
             write_text("NO DIFFERENCES FOUND\n", controls_txt)
         else:
             write_text("\n".join(controls) + "\n", controls_txt)
 
-    raw_json = run_kubescape(zip_path, controls)
+    raw_json = run_kubescape(zip_path, controls, kubescape_path=kubescape_path)
     df = parse_kubescape_output(raw_json)
     save_results_csv(df, out_csv)
     return df
