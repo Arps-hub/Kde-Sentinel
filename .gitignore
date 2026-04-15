@@ -26,3 +26,8 @@ project-yamls/
 project_overview.pdf
 test_out.txt
 kubescape.exe.json
+# Security: tokens and credentials
+Huggingfacetoken.txt
+*token*.txt
+*.key
+*.pem

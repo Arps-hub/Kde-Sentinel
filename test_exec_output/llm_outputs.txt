@@ -1,0 +1,1798 @@
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'access_control'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'access_control':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. The system must be able to restrict access to sensitive data.
+2. The system must be able to manage user access privileges.
+3. The system must be able to enforce access control policies.
+4. The system must be able to audit access to sensitive data.
+5. The system must be able to identify and isolate compromised accounts.
+6. The system must be able to provide a mechanism for user authentication.
+7. The system must be able to define and manage user roles.
+8. The system must be able to define and manage access permissions.
+9. The system must be able to monitor access to sensitive data.
+10. The system must be able to prevent unauthorized access to sensitive data.
+11. The system must be able to provide a mechanism for user account recovery.
+12. The system must be able to support multiple access control models.
+13. The system must be able to integrate with other security tools.
+14. The system must be able to handle high volumes of access requests.
+15. The system must be able to provide a secure and reliable access control mechanism.
+16. The system must be able to identify and report suspicious activity.
+17. The system must be able to enforce access control policies based on user roles.
+18. The system must be able to define and manage access permissions.
+19. The system must be able to provide a mechanism for user account deletion.
+20. The system must be able to support a single-user access control model.
+21. The system must be able to support multiple user access control models.
+22. The system must be able to support a dynamic access control model.
+23. The system must be able to provide a secure and reliable access control mechanism.
+24. The system must be able to handle exceptions to access control policies.
+25. The system must be able to provide a mechanism for user access revocation.
+26. The system must be able to support a centralized access control system.
+27. The system must be able to provide a secure and reliable access control mechanism.
+28. The system must be able to support a single-user access control model.
+29. The system must be able to support multiple user access control models.
+30. The system must be able to support a dynamic access control model.
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'authentication'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'authentication':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. The system must require users to authenticate before accessing any resources.
+2. The system must verify the user's identity.
+3. The system must provide a mechanism for users to change their password.
+4. The system must require users to authenticate with a username and password.
+5. The system must provide a mechanism for users to reset their password.
+6. The system must require users to authenticate with a multi-factor authentication (MFA) method.
+7. The system must provide a mechanism for users to log out.
+8. The system must verify the user's identity.
+9. The system must provide a mechanism for users to change their password.
+10. The system must provide a mechanism for users to reset their password.
+11. The system must require users to authenticate with a username and password.
+12. The system must provide a mechanism for users to log out.
+13. The system must verify the user's identity.
+14. The system must provide a mechanism for users to change their password.
+15. The system must provide a mechanism for users to reset their password.
+16. The system must require users to authenticate with a multi-factor authentication (MFA) method.
+17. The system must provide a mechanism for users to log out.
+18. The system must verify the user's identity.
+19. The system must provide a mechanism for users to change their password.
+20. The system must provide a mechanism for users to reset their password.
+21. The system must require users to authenticate with a username and password.
+22. The system must provide a mechanism for users to log out.
+23. The system must verify the user's identity.
+24. The system must provide a mechanism for users to change their password.
+25. The system must provide a mechanism for users to reset their password.
+26. The system must require users to authenticate with a multi-factor authentication (MFA) method.
+27. The system must provide a mechanism for users to log out.
+28. The system must verify the user's identity.
+29. The system must provide a mechanism for users to change their password.
+30. The system must provide a mechanism for users to reset their password.
+31. The system must require
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'authorization'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'authorization':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Access to the EKS service is restricted to authorized users.
+2. Users must authenticate with a valid username and password.
+3. The system should prevent unauthorized access to EKS resources.
+4. Authorization policies should be defined and enforced.
+5. Users should be assigned roles with specific permissions.
+6. The system should monitor user activity for suspicious behavior.
+7. Audit logs should be maintained for all authorization events.
+8. The system should provide a mechanism for users to request access.
+9. The system should allow for the revocation of access.
+10. The system should be secured against unauthorized access.
+11. The system should be compliant with relevant regulations.
+12. The system should support multiple authorization methods.
+13. The system should be able to handle high volumes of authorization requests.
+14. The system should be resilient to denial-of-service attacks.
+15. The system should be able to identify and classify users based on their roles.
+16. The system should provide a clear and concise authorization process.
+17. The system should be integrated with other security tools.
+18. The system should be tested for security vulnerabilities.
+19. The system should be updated regularly.
+20. The system should be accessible to authorized personnel.
+21. The system should support the use of multi-factor authentication.
+22. The system should be able to handle authorization requests from external sources.
+23. The system should be able to manage user access rights.
+24. The system should provide a mechanism for users to change their authorization.
+25. The system should be able to enforce authorization policies consistently.
+26. The system should be able to identify and report unauthorized access attempts.
+27. The system should be able to handle authorization requests for privileged access.
+28. The system should be able to manage authorization for different service accounts.
+29. The system should be able to support the use of role-based access control (RBAC).
+30. The system should be able to handle authorization requests for automated processes.
+31. The system should be able to support the use of dynamic authorization.
+32. The system should be able to handle authorization requests for external systems
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'data_protection'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'data_protection':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Data encryption at rest.
+2. Data encryption in transit.
+3. Data masking.
+4. Data retention policy.
+5. Data backup and recovery.
+6. Access control.
+7. Audit logging.
+8. Vulnerability scanning.
+9. Incident response.
+10. Data loss prevention.
+11. Data classification.
+12. Compliance with regulations.
+13. Secure configuration.
+14. Data integrity checks.
+15. User authentication.
+16. Multi-factor authentication.
+17. Data deletion.
+18. Data location tracking.
+19. Data lifecycle management.
+20. Secure storage.
+21. Data privacy.
+22. Data availability.
+23. Data redundancy.
+24. Automated data protection.
+25. Manual data protection.
+26. Data sensitivity labeling.
+27. Data access control lists (ACLs).
+28. Network segmentation.
+29. Monitoring and alerting.
+30. Security awareness training.
+31. Data governance.
+32. Data lineage.
+33. Secure development practices.
+34. Cloud security.
+35. Container security.
+36. Serverless security.
+37. Database security.
+38. Storage capacity management.
+39. Data validation.
+40. Data enrichment.
+41. Data minimization.
+42. Data destruction.
+43. Compliance with regulations.
+44. Data breach notification.
+45. Data recovery.
+46. System hardening.
+47. Patch management.
+48. Configuration management.
+49. Security testing.
+50. Threat intelligence.
+51. Data quality.
+52. Data lifecycle.
+53. Data access control.
+54. Data availability.
+55. Data redundancy.
+56. Security hardening.
+57. Automated data protection.
+58. Manual data protection.
+59. Data classification.
+60. Data loss prevention.
+61. Data
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'encryption'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'encryption':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. The system must encrypt data at rest.
+2. The system must encrypt data in transit.
+3. The system must use a strong encryption algorithm.
+4. The system must have a key management policy.
+5. The system must be able to decrypt data.
+6. The system must be able to encrypt data.
+7. The system must be able to decrypt data.
+8. The system must support multiple encryption methods.
+9. The system must be able to handle data loss.
+10. The system must be able to protect against unauthorized access.
+11. The system must be able to protect against data breaches.
+12. The system must be able to comply with relevant regulations.
+13. The system must be able to provide a secure audit trail.
+14. The system must be able to support encryption for specific data types.
+15. The system must be able to handle large volumes of data.
+16. The system must be able to protect against replay attacks.
+17. The system must be able to protect against man-in-the-middle attacks.
+18. The system must be able to protect against data leakage.
+19. The system must be able to provide a secure key management system.
+20. The system must be able to monitor and log encryption activity.
+21. The system must be able to support encryption for specific data types.
+22. The system must be able to handle data loss.
+23. The system must be able to protect against unauthorized access.
+24. The system must be able to comply with relevant regulations.
+25. The system must be able to provide a secure audit trail.
+26. The system must be able to support encryption for specific data types.
+27. The system must be able to handle large volumes of data.
+28. The system must be able to protect against replay attacks.
+29. The system must be able to protect against man-in-the-middle attacks.
+30. The system must be able to protect against data leakage.
+31. The system must be able to provide a secure key management system.
+32. The system must be able to monitor and log encryption activity.
+33. The system must be able to support encryption for specific data types.
+34. The system must be
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'logging_and_monitoring'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'logging_and_monitoring':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Log data should be retained for a minimum of 90 days.
+2. Log data should be accessible to authorized personnel.
+3. Log data should be analyzed for suspicious activity.
+4. Log data should be stored in a secure location.
+5. Log data should be formatted for efficient querying.
+6. Log data should be monitored for anomalies.
+7. Log data should be integrated with other security tools.
+8. Log data should be protected against unauthorized access.
+9. Log data should be retained for a minimum of 30 days.
+10. Log data should be accessible to authorized personnel.
+11. Log data should be analyzed for suspicious activity.
+12. Log data should be stored in a secure location.
+13. Log data should be formatted for efficient querying.
+14. Log data should be monitored for anomalies.
+15. Log data should be integrated with other security tools.
+16. Log data should be protected against unauthorized access.
+17. Log data should be retained for a minimum of 60 days.
+18. Log data should be accessible to authorized personnel.
+19. Log data should be analyzed for suspicious activity.
+20. Log data should be stored in a secure location.
+21. Log data should be formatted for efficient querying.
+22. Log data should be monitored for anomalies.
+23. Log data should be integrated with other security tools.
+24. Log data should be protected against unauthorized access.
+25. Log data should be retained for a minimum of 1 year.
+26. Log data should be accessible to authorized personnel.
+27. Log data should be analyzed for suspicious activity.
+28. Log data should be stored in a secure location.
+29. Log data should be formatted for efficient querying.
+30. Log data should be monitored for anomalies.
+31. Log data should be integrated with other security tools.
+32. Log data should be protected against unauthorized access.
+33. Log data should be retained for a minimum of 30 days.
+34. Log data should be accessible to authorized personnel.
+35. Log data should be analyzed for suspicious activity.
+36. Log data should be stored in a secure location.
+37. Log data should be formatted for efficient querying.
+38. 3
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'network_security'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'network_security':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Network access control policies must be configured to restrict access to the network based on user identity.
+2. Network segmentation should be implemented to isolate critical resources.
+3. All network traffic must be monitored and logged.
+4. The network firewall must be configured to block all inbound and outbound traffic.
+5. Regular security audits should be conducted to identify vulnerabilities.
+6. The network security policy should be reviewed and updated regularly.
+7. The network security policy should be accessible to all authorized users.
+8. Implement a zero-trust network architecture.
+9. Implement a network monitoring solution.
+10. Implement a vulnerability scanning solution.
+11. Configure network access control lists (ACLs) to restrict access to specific resources.
+12. Ensure that all network devices are patched with the latest security updates.
+13. Implement a data loss prevention (DLP) solution.
+14. Implement a secure communication channel.
+15. Monitor network traffic for suspicious activity.
+16. Configure network access based on user role.
+17. Implement a multi-factor authentication (MFA) for all user accounts.
+18. Implement a network security incident response plan.
+19. Regularly test the network security policy.
+20. Ensure that all network devices are properly secured.
+21. Implement a secure configuration management process.
+22. Implement a secure containerization strategy.
+23. Implement a secure cloud environment.
+24. Implement a secure data transfer protocol.
+25. Ensure that all network devices are configured to support the latest security standards.
+26. Implement a process for handling security incidents.
+27. Monitor network performance.
+28. Implement a threat intelligence feed.
+29. Configure network access based on user role.
+30. Implement a secure configuration management process.
+31. Implement a secure containerization strategy.
+32. Implement a secure cloud environment.
+33. Implement a secure data transfer protocol.
+34. Ensure that all network devices are properly secured.
+35. Implement a process for handling security incidents.
+36. Monitor network performance.
+37. Implement a threat intelligence feed.
+38. Configure network access based on
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'patch_management'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'patch_management':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Establish a process for patching vulnerabilities in Amazon Elastic
+2. Kubernetes Service (EKS)
+3. Implement a system for monitoring the status of patches
+4. Automate patching of vulnerabilities
+5. Define a process for handling security incidents related to
+6. patching
+7. Ensure that patches are applied to all systems
+8. Verify the integrity of patches
+9. Maintain a record of patch management activities
+10. Establish a process for selecting patches
+11. Implement a system for managing vulnerabilities
+12. Define a process for communicating with stakeholders
+13. Ensure that patches are applied to all systems
+14. Monitor the effectiveness of patch management
+15. Implement a process for updating the patch management
+16. Define a process for handling security incidents
+17. Ensure that patches are applied to all systems
+18. Maintain a record of patch management activities
+19. Define a process for selecting patches
+20. Implement a system for managing vulnerabilities
+21. Define a process for communicating with stakeholders
+22. Ensure that patches are applied to all systems
+23. Monitor the effectiveness of patch management
+24. Implement a process for handling security incidents
+25. Define a process for updating the patch management
+26. Define a process for handling security incidents
+27. Ensure that patches are applied to all systems
+28. Maintain a record of patch management activities
+29. Define a process for selecting patches
+30. Implement a system for managing vulnerabilities
+31. Define a process for communicating with stakeholders
+32. Ensure that patches are applied to all systems
+33. Monitor the effectiveness of patch management
+34. Implement a process for handling security incidents
+35. Define a process for updating the patch management
+36. Define a process for handling security incidents
+37. Ensure that patches are applied to all systems
+38. Maintain a record of patch management activities
+39. Define a process for selecting patches
+40. Implement a system for managing vulnerabilities
+41. Define a process for communicating with stakeholders
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'privileged_access'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'privileged_access':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Access to the AWS CLI
+2. Access to the AWS SDK
+3. Access to the AWS IAM
+4. Access to the AWS KMS
+5. Access to the AWS CloudTrail
+6. Access to the AWS Security Hub
+7. Access to the AWS Config
+8. Access to the AWS Systems Manager
+9. Access to the AWS Database Migration Service
+10. Access to the AWS Marketplace
+11. Access to the AWS Command Line Interface (CLI)
+12. Access to the AWS SDK
+13. Access to the AWS IAM Role
+14. Access to the AWS IAM Policy
+15. Access to the AWS Security Events
+16. Access to the AWS Secrets Manager
+17. Access to the AWS CloudWatch
+18. Access to the AWS VPC
+19. Access to the AWS EKS cluster
+20. Access to the AWS EKS CLI
+21. Access to the AWS EKS IAM Role
+22. Access to the AWS EKS IAM Policy
+23. Access to the AWS Security Hub
+24. Access to the AWS Config
+25. Access to the AWS Systems Manager
+26. Access to the AWS Database Migration Service
+27. Access to the AWS Marketplace
+28. Access to the AWS Command Line Interface (CLI)
+29. Access to the AWS SDK
+30. Access to the AWS IAM User
+31. Access to the AWS IAM Group
+32. Access to the AWS IAM Role
+33. Access to the AWS IAM Policy
+34. Access to the AWS Security Events
+35. Access to the AWS Secrets Manager
+36. Access to the AWS CloudWatch
+37. Access to the AWS VPC
+38. Access to the AWS EKS cluster
+39. Access to the AWS EKS CLI
+40. Access to the AWS EKS IAM Role
+41. Access to the AWS EKS IAM Policy
+42. Access to the AWS Security Hub
+43. Access to the AWS Config
+44. Access to the AWS Systems Manager
+45. Access to the AWS Database Migration Service
+46. Access to the
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'vulnerability_management'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.2.0 - 11-23-2022 
+ 
+ 
+
+Page 1 
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+
+Page 2 
+Table of Contents 
+Terms of Use .................................................................................................................. 1 
+Table of Contents ........................................................................................................... 2 
+Overview ......................................................................................................................... 5 
+Intended Audience ................................................................................................................... 5 
+Consensus Guidance .............................................................................................................. 6 
+Typographical Conventions .................................................................................................... 7 
+Recommendation Definitions ....................................................................................... 8 
+Title ............................................................................................................................................ 8 
+Assessment Status .................................................................................................................. 8 
+Automated ............................................................................................................................................. 8 
+Manual .................................................................................................................................................... 8 
+Profile ........................................................................................................................................ 8 
+Description ............................................................................................................................... 8 
+Rationale Statement ................................................................................................................. 8 
+Impact Statement ..................................................................................................................... 9 
+Audit Procedure ....................................................................................................................... 9 
+Remediation Procedure ........................................................................................................... 9 
+Default Value ............................................................................................................................ 9 
+References ................................................................................................................................ 9 
+CIS Critical Security Controls® (CIS Controls®) ..........................................
+
+Requirements for 'vulnerability_management':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Automated vulnerability scanning
+2. Manual vulnerability scanning
+3. Regular vulnerability assessment
+4. Reporting of vulnerabilities
+5. Remediation of vulnerabilities
+6. Configuration management of vulnerability scanning tools
+7. Monitoring of vulnerability scan results
+8. Integration with other security tools
+9. Vulnerability prioritization
+10. Establishment of a vulnerability management policy
+11. Training of personnel on vulnerability management
+12. Documentation of vulnerability management processes
+13. Secure storage of vulnerability data
+14. Automated vulnerability patching
+15. Manual vulnerability patching
+16. Testing of vulnerability remediation
+17. Compliance with relevant regulations
+18. Incident response procedures related to vulnerabilities
+19. Establishment of a vulnerability management dashboard
+20. Monitoring of vulnerability scan results
+21. Configuration of vulnerability scanning tools
+22. Establishment of a vulnerability management policy
+23. Training of personnel on vulnerability management
+24. Documentation of vulnerability management processes
+25. Secure access to vulnerability data
+26. Automated vulnerability reporting
+27. Manual vulnerability reporting
+28. Vulnerability identification
+29. Vulnerability assessment
+30. Vulnerability prioritization
+31. Vulnerability remediation
+32. Vulnerability patching
+33. Vulnerability monitoring
+34. Vulnerability isolation
+35. Vulnerability correlation
+36. Vulnerability analysis
+37. Vulnerability mitigation
+38. Vulnerability management tools
+39. Vulnerability scanning
+40. Vulnerability assessment
+41. Vulnerability prioritization
+42. Vulnerability remediation
+43. Vulnerability patching
+44. Vulnerability monitoring
+45. Vulnerability isolation
+46. Vulnerability correlation
+47. Vulnerability analysis
+48. Vulnerability mitigation
+49. Vulnerability management policy
+50. Incident response procedures related to vulnerabilities
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'access_control'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'access_control':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Access to the CIS Amazon Elastic Kubernetes Service (EKS) is restricted to authorized personnel only.
+2. All access to the CIS Amazon Elastic Kubernetes Service (EKS) must be logged.
+3. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+4. Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based on a role-based access control (RBAC) system.
+5. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+6. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+7. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+8. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+9. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+10. Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be restricted to authorized personnel only.
+11. All access to the CIS Amazon Elastic Kubernetes Service (EKS) must be logged.
+12. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+13. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+14. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+15. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+16. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+17. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+18. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+19. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+20. Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be restricted to authorized personnel only.
+21. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure network.
+22. The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only through a secure
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'authentication'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'authentication':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. The system must authenticate users before granting access to the EKS cluster.
+2. The system must verify the identity of users attempting to access the EKS cluster.
+3. The system must require a username and password for authentication.
+4. The system must support multiple authentication methods.
+5. The system must prevent unauthorized access to the EKS cluster.
+6. The system must provide a mechanism for user account recovery.
+7. The system must be able to detect and respond to suspicious activity.
+8. The system must be able to authenticate users based on their role.
+9. The system must be able to authenticate users based on their location.
+10. The system must be able to authenticate users based on their device.
+11. The system must provide a secure way to store user credentials.
+12. The system must be able to handle multiple authentication attempts.
+13. The system must be able to validate the user's identity.
+14. The system must be able to provide a user-friendly interface for authentication.
+15. The system must be able to integrate with existing identity providers.
+16. The system must be able to handle exceptions to the authentication process.
+17. The system must be able to provide a mechanism for user account lockout.
+18. The system must be able to monitor the authentication process.
+19. The system must be able to audit authentication events.
+20. The system must be able to support a variety of authentication methods.
+21. The system must be able to provide a secure way to revoke access.
+22. The system must be able to provide a mechanism for user feedback.
+23. The system must be able to support a variety of authentication methods.
+24. The system must be able to provide a secure way to manage user access.
+25. The system must be able to handle multiple authentication methods.
+26. The system must be able to provide a secure way to store user credentials.
+27. The system must be able to detect and respond to suspicious activity.
+28. The system must be able to authenticate users based on their role.
+29. The system must be able to authenticate users based on their location.
+30. The system must be able to authenticate users based on their device.
+31. The system must provide a secure way
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'authorization'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'authorization':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Access to CIS Benchmarks is restricted to authorized personnel only.
+2. Users must authenticate with a valid CIS account.
+3. Authorization is granted based on roles and responsibilities.
+4. The system should prevent unauthorized access to CIS Benchmarks.
+5. Authorization is required for all actions involving CIS Benchmarks.
+6. Authorization is limited to specific, defined groups.
+7. Authorization is granted through a secure mechanism.
+8. The system should log all authorization attempts.
+9. Authorization is validated against a defined policy.
+10. Authorization is not allowed to be delegated.
+11. Authorization is not allowed to be revoked.
+12. Authorization is not allowed to be shared.
+13. Authorization is required for all users.
+14. Authorization is based on a defined role.
+15. Authorization is not allowed to be bypassed.
+16. Authorization is not allowed to be overwritten.
+17. Authorization is not allowed to be extended.
+18. Authorization is not allowed to be modified.
+19. Authorization is not allowed to be deleted.
+20. Authorization is not allowed to be assigned to a different account.
+21. Authorization is not allowed to be assigned to a different role.
+22. Authorization is not allowed to be assigned to a different group.
+23. Authorization is not allowed to be assigned to a different system.
+24. Authorization is not allowed to be assigned to a different service.
+25. Authorization is not allowed to be assigned to a different resource.
+26. Authorization is not allowed to be assigned to a different process.
+27. Authorization is not allowed to be assigned to a different user.
+28. Authorization is not allowed to be assigned to a different group.
+29. Authorization is not allowed to be assigned to a different system.
+30. Authorization is not allowed to be assigned to a different service.
+31. Authorization is not allowed to be assigned to a different resource.
+32. Authorization is not allowed to be assigned to a different process.
+33. Authorization is not allowed to be assigned to a different user.
+34. Authorization is not allowed to be assigned to a different group.
+35. Authorization is not allowed to be assigned to a different system.
+36. Authorization is not allowed to be assigned to a different service
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'data_protection'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'data_protection':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. No hosting of CIS Benchmarks on 3rd party sites.
+2. Protect sensitive data.
+3. Implement a data loss prevention (DLP) strategy.
+4. Encrypt data at rest and in transit.
+5. Maintain a secure access control policy.
+6. Regularly audit data access logs.
+7. Implement a data backup and recovery plan.
+8. Ensure compliance with relevant regulations.
+9. Implement a data masking strategy.
+10. Securely manage user accounts.
+11. Monitor data usage.
+12. Implement a vulnerability management program.
+13. Establish a data retention policy.
+14. Implement a data classification scheme.
+15. Ensure data integrity.
+16. Implement a secure communication channel.
+17. Protect against insider threats.
+18. Maintain a comprehensive audit trail.
+19. Implement a data minimization strategy.
+20. Securely store data in a compliant environment.
+21. FINAL ANSWER: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'encryption'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'encryption':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. The CIS Amazon Elastic Kubernetes Service (EKS) must encrypt all data at rest and in transit.
+2. The CIS Amazon Elastic Kubernetes Service (EKS) must use a strong encryption algorithm.
+3. The CIS Amazon Elastic Kubernetes Service (EKS) must protect sensitive data with a key management system.
+4. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data at rest.
+5. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data in transit.
+6. The CIS Amazon Elastic Kubernetes Service (EKS) must use a secure key exchange mechanism.
+7. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data at rest.
+8. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data in transit.
+9. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data at rest.
+10. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data in transit.
+11. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data at rest.
+12. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data in transit.
+13. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data at rest.
+14. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data in transit.
+15. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data at rest.
+16. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data in transit.
+17. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data at rest.
+18. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data in transit.
+19. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data at rest.
+20. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to encrypt data in transit.
+21. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data at rest.
+22. The CIS Amazon Elastic Kubernetes Service (EKS) must be able to decrypt data in transit.
+23. The CIS Amazon
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'logging_and_monitoring'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'logging_and_monitoring':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. The system must log all security-related events, including but not limited to,
+2. authentication attempts, access control changes, and audit trail entries.
+3. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+4. The system must log all security-related events, including but not limited to,
+5. authentication attempts, access control changes, and audit trail entries.
+6. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+7. The system must log all security-related events, including but not limited to,
+8. authentication attempts, access control changes, and audit trail entries.
+9. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+10. The system must log all security-related events, including but not limited to,
+11. authentication attempts, access control changes, and audit trail entries.
+12. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+13. The system must log all security-related events, including but not limited to,
+14. authentication attempts, access control changes, and audit trail entries.
+15. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+16. The system must log all security-related events, including but not limited to,
+17. authentication attempts, access control changes, and audit trail entries.
+18. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+19. The system must log all security-related events, including but not limited to,
+20. authentication attempts, access control changes, and audit trail entries.
+21. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+22. The system must log all security-related events, including but not limited to,
+23. authentication attempts, access control changes, and audit trail entries.
+24. The system must monitor key security metrics, such as CPU utilization, memory usage, and network traffic.
+25. The system must log all security-related events, including but not limited to,
+26. authentication attempts, access control changes, and audit trail entries.
+27. The system must monitor key security metrics, such as
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'network_security'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'network_security':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. No hosting of CIS Benchmarks on 3rd party sites.
+2. Ensure proper access controls for network access.
+3. Implement a network segmentation strategy.
+4. Monitor network traffic for suspicious activity.
+5. Configure firewall rules to restrict access.
+6. Implement a vulnerability management program.
+7. Regularly audit network security configurations.
+8. Protect against DDoS attacks.
+9. Ensure data encryption in transit and at rest.
+10. Implement multi-factor authentication (MFA) for privileged access.
+11. Establish a clear incident response plan.
+12. Maintain a secure configuration management system.
+13. Limit access to network resources based on user roles.
+14. Implement network monitoring tools.
+15. Ensure compliance with relevant regulations.
+16. Protect against malware infections.
+17. Implement a secure logging and auditing system.
+18. Consider using a VPN for remote access.
+19. Ensure network connectivity is stable.
+20. Implement a zero-trust security model.
+21. Final Answer:
+22. No hosting of CIS Benchmarks on 3rd party sites.
+23. Ensure proper access controls for network access.
+24. Implement a network segmentation strategy.
+25. Monitor network traffic for suspicious activity.
+26. Configure firewall rules to restrict access.
+27. Implement a vulnerability management program.
+28. Regularly audit network security configurations.
+29. Protect against DDoS attacks.
+30. Ensure data encryption in transit and at rest.
+31. Implement multi-factor authentication (MFA) for privileged access.
+32. Establish a clear incident response plan.
+33. Maintain a secure configuration management system.
+34. Limit access to network resources based on user roles.
+35. Implement network monitoring tools.
+36. Ensure compliance with relevant regulations.
+37. Protect against malware infections.
+38. Implement a secure logging and auditing system.
+39. Consider using a VPN for remote access.
+40. Ensure network connectivity is stable.
+41. Implement a zero-trust security model.
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'patch_management'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'patch_management':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Establish a process for regularly patching and updating the EKS cluster.
+2. Implement a system for monitoring the status of security patches.
+3. Ensure that all patches are applied to the EKS cluster.
+4. Maintain a record of all patches applied to the EKS cluster.
+5. Define a process for testing patches before deployment to the EKS cluster.
+6. Implement a mechanism for alerting on security vulnerabilities.
+7. Ensure that the EKS cluster is running a supported version of Kubernetes.
+8. Automate patch deployment to the EKS cluster.
+9. Review and update the patch management policy regularly.
+10. Identify and mitigate risks associated with patching.
+11. Implement a process for handling patch rollbacks.
+12. Ensure that the patch management system is accessible to all relevant personnel.
+13. Verify the integrity of the patches.
+14. Monitor the performance of the EKS cluster after patching.
+15. Document the patch management process.
+16. Establish a process for managing the lifecycle of the EKS cluster.
+17. Implement a process for identifying and remediating vulnerabilities.
+18. Ensure that the patch management system is secure.
+19. Consider the impact of patching on other systems.
+20. Provide training to personnel on patch management.
+21. Implement a process for managing the distribution of patches.
+22. Verify the patch management system is operational.
+23. Ensure that the patch management system is compliant with relevant regulations.
+24. Monitor the effectiveness of the patch management system.
+25. Implement a process for handling exceptions to the patch management policy.
+26. Define the scope of the patch management policy.
+27. Establish a process for managing the patch management budget.
+28. Consider the impact of patch management on cloud provider services.
+29. Implement a process for integrating patch management with other security tools.
+30. Ensure that the patch management system is scalable.
+31. Define the roles and responsibilities for patch management.
+32. Establish a process for reporting security incidents.
+33. Implement a process for managing the lifecycle of the EKS cluster.
+34. Ensure that the patch management system is accessible to all
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'privileged_access'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'privileged_access':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Access to the AWS EKS service is restricted to authorized personnel only.
+2. The privileged access mechanism must be secured.
+3. All privileged access requests must be logged.
+4. The privileged access mechanism must be audited.
+5. The privileged access mechanism must be protected against unauthorized access.
+6. The privileged access mechanism must be used only for authorized purposes.
+7. The privileged access mechanism must be configured to prevent data leakage.
+8. The privileged access mechanism must be configured to prevent privilege escalation.
+9. The privileged access mechanism must be configured to prevent lateral movement.
+10. The privileged access mechanism must be configured to prevent account takeover.
+11. The privileged access mechanism must be configured to monitor the activity of the privileged access.
+12. The privileged access mechanism must be configured to provide a secure exit strategy.
+13. The privileged access mechanism must be configured to support multiple roles.
+14. The privileged access mechanism must be configured to support a single user.
+15. The privileged access mechanism must be configured to support a group.
+16. The privileged access mechanism must be configured to support a service.
+17. The privileged access mechanism must be configured to support a specific data type.
+18. The privileged access mechanism must be configured to support a specific user.
+19. The privileged access mechanism must be configured to support a specific time period.
+20. The privileged access mechanism must be configured to support a specific location.
+21. The privileged access mechanism must be configured to support a specific protocol.
+22. The privileged access mechanism must be configured to support a specific authentication method.
+23. The privileged access mechanism must be configured to support a specific authorization level.
+24. The privileged access mechanism must be configured to support a rollback mechanism.
+25. The privileged access mechanism must be configured to support a secure escalation path.
+26. The privileged access mechanism must be configured to support a secure exit strategy.
+27. The privileged access mechanism must be configured to support multiple roles.
+28. The privileged access mechanism must be configured to support a single user.
+29. The privileged access mechanism must be configured to support a group.
+30. The privileged access mechanism must be configured to support a service.
+31. The privileged access mechanism must be configured to support a specific data type.
+
+================================================================================
+
+*LLM Name*
+google/gemma-3-1b-it
+
+*Prompt Used*
+You are a security analyst. Read the following document excerpt and list all security requirements related to 'vulnerability_management'. Return only a numbered list of requirements. If none are found, return 'NONE'.
+
+Document:
+ 
+Internal Only - General
+CIS Amazon Elastic 
+Kubernetes Service (EKS) 
+Benchmark 
+v1.6.0 - 12-23-2024 
+ 
+ 
+
+Page 1 
+Internal Only - General
+Terms of Use 
+Please see the below link for our current terms of use: 
+https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/ 
+ 
+For information on referencing and/or citing CIS Benchmarks in 3rd party documentation 
+(including using portions of Benchmark Recommendations) please contact CIS Legal 
+(CISLegal@cisecurity.org) and request guidance on copyright usage.  
+NOTE:  It is NEVER acceptable to host a CIS Benchmark in ANY format (PDF, etc.) 
+on a 3rd party (non-CIS owned) site. 
+
+Page 2 
+Internal Only - General
+Table of Contents 
+Terms of Use ..................................................................................................................... 1 
+Table of Contents ............................................................................................................. 2 
+Overview ............................................................................................................................ 5 
+Important Usage Information .................................................................................................... 5 
+Key Stakeholders.................................................................................................................................... 5 
+Apply the Correct Version of a Benchmark ......................................................................................... 6 
+Exceptions ............................................................................................................................................... 6 
+Remediation ............................................................................................................................................ 7 
+Summary.................................................................................................................................................. 7 
+Target Technology Details ........................................................................................................ 8 
+Intended Audience ..................................................................................................................... 8 
+Consensus Guidance ................................................................................................................. 9 
+Typographical Conventions .................................................................................................... 10 
+Recommendation Definitions ....................................................................................... 11 
+Title ............................................................................................................................................. 11 
+Assessment Status .................................................................................................................. 11 
+Automated ..........................................
+
+Requirements for 'vulnerability_management':
+
+*Prompt Type*
+zero-shot
+
+*LLM Output*
+1. Implement a vulnerability scanning process.
+2. Regularly monitor vulnerability reports.
+3. Establish a process for remediating vulnerabilities.
+4. Maintain a vulnerability database.
+5. Automate vulnerability scanning.
+6. Define and document vulnerability response procedures.
+7. Test vulnerability management processes.
+8. Ensure compliance with relevant regulations.
+9. Implement a patch management process.
+10. Monitor the effectiveness of vulnerability management.
+11. Establish a process for handling exceptions.
+12. Ensure the security of the vulnerability management system.
+13. Provide training on vulnerability management.
+14. Define and document the scope of vulnerability management.
+15. Implement a process for identifying and prioritizing vulnerabilities.
+16. Establish a process for communicating vulnerability information.
+17. Ensure the security of the vulnerability management system.
+18. Maintain a process for tracking vulnerabilities.
+19. Implement a process for managing vulnerabilities.
+20. Ensure the security of the vulnerability management system.
+21. Define and document the roles and responsibilities for vulnerability management.
+22. Implement a process for incident response related to vulnerabilities.
+23. Monitor the performance of the vulnerability management system.
+24. Ensure the security of the vulnerability management system.
+25. Maintain a process for updating vulnerability management.
+26. Define and document the scope of vulnerability management.
+27. Implement a process for handling exceptions.
+28. Ensure the security of the vulnerability management system.
+29. Provide support for vulnerability management.
+30. Define and document the process for vulnerability discovery.
+31. Define and document the process for vulnerability assessment.
+32. Define and document the process for vulnerability remediation.
+33. Define and document the process for vulnerability reporting.
+34. Define and document the process for vulnerability tracking.
+35. Define and document the process for vulnerability management.
+36. Implement a process for incident response related to vulnerabilities.
+37. Monitor the security of the vulnerability management system.
+38. Ensure the security of the vulnerability management system.
+39. Maintain a process for updating vulnerability management.
+40. Define and document the scope of vulnerability management.
+41. 4
+
+================================================================================
+
