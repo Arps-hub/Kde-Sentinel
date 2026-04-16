@@ -8,7 +8,7 @@ This project compares two security requirements documents, extracts key requirem
 
 - Course: `COMP 5700/6700`
 - Institution: `Auburn University`
-- Team: `Ayush Patel`, `Ryan Lunsford`
+- Team: `Ayush Patel`, `Ryan Lunsford`, `Jim cha`
 
 ## What The Project Does
 
