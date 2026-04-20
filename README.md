@@ -8,7 +8,15 @@ This project compares two security requirements documents, extracts key requirem
 
 - Course: `COMP 5700/6700`
 - Institution: `Auburn University`
-- Team: `Ayush Patel`, `Ryan Lunsford`, `Jim cha`
+- LLM used for Task-1: `google/gemma-3-1b-it` (Gemma-3-1B)
+
+### Team
+
+| Name | University Email |
+|---|---|
+| Ayush Patel | `ayp0006@auburn.edu` |
+| Ryan Lunsford | `rtl0019@auburn.edu` |
+| Jim Cha | `jzc0295@auburn.edu` |
 
 ## What The Project Does
 
@@ -106,6 +114,21 @@ pytest tests/ -v
 ```
 
 The test suite covers the extractor, comparator, executor, and shared fixtures. LLM and Kubescape interactions are mocked for fast local runs and CI execution.
+
+### Running Tests Automatically On `git status`
+
+The Task-4 rubric asks for tests to run every time a contributor types `git status`. GitHub Actions cannot hook local git commands directly, so this repository provides a one-time local setup script that installs a git pre-commit hook and a `git stat` alias:
+
+```bash
+python setup_git_hooks.py
+```
+
+After running it:
+
+- `git stat` runs the full pytest suite and then shows `git status`.
+- `git commit` also runs pytest first (pre-commit hook) and aborts the commit on failure.
+
+The same test suite is executed on every push / PR by the GitHub Actions workflow in `.github/workflows/ci.yml`.
 
 ## Output Files
 
