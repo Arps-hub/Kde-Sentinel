@@ -75,19 +75,23 @@ def test_diff_element_names_missing_key():
 def test_diff_requirements_identical():
     """diff_requirements returns empty list for identical dicts."""
     from src.comparator import diff_requirements
-    result = diff_requirements(DOC1, DOC1)
+    result = diff_requirements(DOC1, DOC1, "doc1.yaml", "doc1.yaml")
     assert result == []
 
 
 def test_diff_requirements_extra_req():
-    """diff_requirements catches a requirement present in only one document."""
+    """diff_requirements reports KDE-absent rows and requirement-level diffs."""
     from src.comparator import diff_requirements
-    result = diff_requirements(DOC1, DOC2)
-    # DOC1.encryption has "Use TLS 1.2." but DOC2.encryption does not
-    names = [t[0] for t in result]
-    reqs = [t[1] for t in result]
-    assert "encryption" in names
-    assert "Use TLS 1.2." in reqs
+    result = diff_requirements(DOC1, DOC2, "doc1.yaml", "doc2.yaml")
+    # Every row is a 4-tuple: (name, absent_in, present_in, req)
+    assert all(len(t) == 4 for t in result)
+
+    # access_control is in DOC1 only → absent in doc2, present in doc1, req=NA
+    assert ("access_control", "doc2.yaml", "doc1.yaml", "NA") in result
+    # network_security is in DOC2 only → absent in doc1, present in doc2, req=NA
+    assert ("network_security", "doc1.yaml", "doc2.yaml", "NA") in result
+    # encryption requirement "Use TLS 1.2." is in DOC1 only → absent in doc2
+    assert ("encryption", "doc2.yaml", "doc1.yaml", "Use TLS 1.2.") in result
 
 
 # ---------------------------------------------------------------------------
@@ -120,13 +124,16 @@ def test_write_differing_elements_no_diff(tmp_path):
 # ---------------------------------------------------------------------------
 
 def test_write_differing_requirements_format(tmp_path):
-    """write_differing_requirements writes 'NAME,REQU' formatted lines."""
+    """write_differing_requirements writes the 4-column rubric format."""
     from src.comparator import write_differing_requirements
     path = str(tmp_path / "reqs.txt")
-    write_differing_requirements([("encryption", "Use TLS 1.2.")], path)
+    write_differing_requirements(
+        [("encryption", "doc2.yaml", "doc1.yaml", "Use TLS 1.2.")],
+        path,
+    )
     with open(path) as f:
         content = f.read()
-    assert "encryption,Use TLS 1.2." in content
+    assert "encryption,ABSENT-IN-doc2.yaml,PRESENT-IN-doc1.yaml,Use TLS 1.2." in content
 
 
 def test_write_differing_requirements_no_diff(tmp_path):

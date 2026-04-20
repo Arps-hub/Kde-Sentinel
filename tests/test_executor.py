@@ -85,14 +85,17 @@ def test_read_differing_elements_no_diff(tmp_path):
 # ---------------------------------------------------------------------------
 
 def test_read_differing_requirements_tuple_format(tmp_path):
-    """read_differing_requirements parses NAME,REQU lines into tuples."""
+    """read_differing_requirements parses 4-column lines into (name, absent, present, req) tuples."""
     from src.executor import read_differing_requirements
     path = str(tmp_path / "reqs.txt")
     with open(path, "w") as f:
-        f.write("encryption,Use TLS 1.2.\nauthentication,Require MFA.\n")
+        f.write(
+            "encryption,ABSENT-IN-doc2.yaml,PRESENT-IN-doc1.yaml,Use TLS 1.2.\n"
+            "access_control,ABSENT-IN-doc2.yaml,PRESENT-IN-doc1.yaml,NA\n"
+        )
     result = read_differing_requirements(path)
-    assert ("encryption", "Use TLS 1.2.") in result
-    assert ("authentication", "Require MFA.") in result
+    assert ("encryption", "ABSENT-IN-doc2.yaml", "PRESENT-IN-doc1.yaml", "Use TLS 1.2.") in result
+    assert ("access_control", "ABSENT-IN-doc2.yaml", "PRESENT-IN-doc1.yaml", "NA") in result
 
 
 # ---------------------------------------------------------------------------
@@ -247,7 +250,7 @@ def test_run_executor_integration(tmp_path):
     with open(elements_txt, "w") as f:
         f.write("encryption\nauthentication\n")
     with open(reqs_txt, "w") as f:
-        f.write("encryption,Use TLS 1.2.\n")
+        f.write("encryption,ABSENT-IN-doc2.yaml,PRESENT-IN-doc1.yaml,Use TLS 1.2.\n")
 
     mock_result = MagicMock()
     mock_result.returncode = 0

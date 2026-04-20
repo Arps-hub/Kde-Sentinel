@@ -51,7 +51,13 @@ def read_differing_elements(path: str) -> list:
 
 
 def read_differing_requirements(path: str) -> list:
-    """Read the requirements diff TEXT file from Task-2."""
+    """Read the requirements diff TEXT file from Task-2.
+
+    Supports the 4-column rubric format
+    ``NAME,ABSENT-IN-<FILE>,PRESENT-IN-<FILE>,REQ`` and returns a list of
+    ``(name, absent_in, present_in, req)`` tuples. ``req`` may be the literal
+    ``"NA"`` when the whole KDE is missing from one side.
+    """
     validate_file_exists(path)
     with open(path, "r", encoding="utf-8") as f:
         content = f.read().strip()
@@ -63,11 +69,14 @@ def read_differing_requirements(path: str) -> list:
         line = line.strip()
         if not line:
             continue
-        idx = line.index(",") if "," in line else -1
-        if idx == -1:
-            result.append((line, ""))
+        parts = line.split(",", 3)
+        if len(parts) == 4:
+            result.append((parts[0], parts[1], parts[2], parts[3]))
+        elif len(parts) == 2:
+            # Backwards-compat: legacy NAME,REQ format
+            result.append((parts[0], "", "", parts[1]))
         else:
-            result.append((line[:idx], line[idx + 1:]))
+            result.append((parts[0], "", "", ""))
     return result
 
 
