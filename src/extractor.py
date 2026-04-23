@@ -535,10 +535,6 @@ def extract_kdes(text: str, prompt_fn: Callable[[str, str], str]) -> dict:
               ...
             }
     """
-    structured = _extract_kdes_from_cis_text(text)
-    if structured:
-        return structured
-
     pipe = get_llm_pipeline()
     result = {}
 

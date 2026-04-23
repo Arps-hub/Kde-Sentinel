@@ -49,7 +49,6 @@ kde-sentinel/
 |-- main.py                CLI entry point
 |-- run_all_combinations.py
 |-- build_executable.py
-|-- generate_report.py
 |-- PROMPT.md
 |-- requirements.txt
 `-- README.md

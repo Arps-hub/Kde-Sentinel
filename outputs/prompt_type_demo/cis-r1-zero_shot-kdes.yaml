@@ -1,0 +1,221 @@
+access_control:
+  name: access_control
+  requirements:
+  - The access control mechanism should be implemented in such a way as to ensure
+    that users can only access resources based on their assigned roles. This requires
+    defining specific rules regarding user privileges and authorization policies.
+    The system must provide mechanisms for managing these rules through an accessible
+    interface. Access controls need to consider both internal and external access.
+    Furthermore, any changes to access control configurations require proper auditing
+    and logging. These requirements apply to all aspects of accessing resources within
+    the environment.
+  - 'Security Requirements Related To ‘Access_Control’ :'
+  - Establish secure authentication methods for worker nodes.
+  - Configure kubelets' kubeconfig file permissions to restrict access.
+  - Audit access control events regularly.
+  - Verify compliance against CIS critical security controls.
+  - The system should be able to identify users who have access to specific resources
+    based on their roles and privileges. This requires defining policies that determine
+    what actions can be performed by different user groups. The policy engine must
+    ensure consistent application across all systems. Policy enforcement mechanisms
+    need to be implemented in order to enforce these rules. Access control needs to
+    be managed through an accessible interface.
+  - Ensure that the kubelet kubeconf file ownership is set to Root:root (Manual).
+  - Ensure that thekubelet config file has permission set to 64/4 (Manual).
+  - Ensure that the kubelot config file ownership is set to ROOT:ROOT(Manual).
+  - Ensure that the anonymous auth is not enabled (Automated).
+  - Ensure that the --authorization-method argument is not set to always allow (Automated).
+  - Ensure that a client ca file is configured (Manual).
+  - Ensure that the `--read-only-port` is disabled (Manual).
+  - Ensure that the `--streaming-connection-idle-time` argument is not set to zero
+    (Automated
+  - The goal is to ensure that users can only perform actions within their assigned
+    roles or groups. Access control should be implemented through policies and configurations.
+    The policy's purpose must be clearly defined by the organization. Policy enforcement
+    mechanisms need to be robust and reliable. All resources accessed via this mechanism
+    will have an associated audit trail.
+  - Minimize wildcards in Role definitions.
+  - Limit access to pod creation/management.
+  - Ensure no active systems like bind, impersonate, escalate are allowed.
+  - Avoid using System:Masters Group.
+  - Validate User Permissions before granting access.
+authentication:
+  name: authentication
+  requirements:
+  - Minimize user access to Amazon E CR
+  - Prefer using dedicated EKS Service Account (Manual).
+  - Ensure Kubernetes Secrets are encrypted using customer master keys (CMKs) managed
+    by AWS KMS (Manual).
+  - Manage Kubernetes RBAC users with aws iam authenticator for kubernetes (Manual)
+  - Consider Fargate for running untrustworthy workloads (Manual)
+  - Ensure that the AWS account used to manage the control plane has appropriate
+  - permissions to export logs to CloudWatch Log Groups.
+  - requests.
+  - '**SECURITY REQUIREMENTS RELATED TO AUTHENTICATION:**'
+  - control plane.
+  - export logs to CloudWatch LogGroups.
+  - Audit user actions within the control plane environment.
+  - the control plane.
+  - '**PAGE 16 - 17**'
+  - 2.1 Management Access
+  - 'Log Level:'
+  - •    Level 1
+  - 'Description:'
+  - Access to the management console for the EKS clusters requires an additional
+  - on the cluster.
+  - 'Rationale:'
+  - To prevent unauthorized administrative access to the control plane
+  - 'The document specifies authentication settings within AWS Key Pairs used with
+    Kubernetes clusters. Specifically, it requires enabling Authentication and Control
+    Manager access on these cluster configurations. It also mentions disabling API
+    Server logging as part of the overall setup. Therefore, here are some specific
+    requirements relating to authentication:'
+  - Securely store and manage private key pairs associated with cluster configurations.
+  - Disable API Server logging if not required due to sensitivity concerns.
+  - Disabling API Server logging if not needed
+authorization:
+  name: authorization
+  requirements:
+  - All worker nodes should have their kubeconfig files configured with restricted
+    permissions.
+  - Security audits will verify the effectiveness of authorization controls.
+  - All worker nodes should have theirkubeconfig files configured with restricted
+    permission(2).
+  - The system must ensure that users can be authorized to access resources based
+    on their roles. The authorization mechanism should allow for granular control
+    over who can perform specific actions within the cluster. This includes defining
+    user accounts with different privileges levels. Users need to have an account
+    associated with them in the Kubernetes API server.
+  - Authorization policies defined through RBAC.
+  - Restrict access to sensitive data based on roles assigned to users or groups.
+  - Minimize privilege escalation within the cluster.
+  - Use automated tools for policy enforcement.
+  - Define specific authorization policies for each component/service.
+  - Consider using Role Based Access Control (RBAC) as primary method.
+  - Restrict access to sensitive data based upon roles assigned to users orgroups.
+data_protection:
+  name: data_protection
+  requirements:
+  - development lifecycle (SDLC). Data protection considerations
+  - '**SECURITY REQUIREMENTS RELATED TO DATA PROTECTION:**'
+  - Develop a comprehensive risk assessment process.
+  - Ensure that the AWS account used for controlling the control plane has appropriate
+  - permissions to export logs to CloudWatch Logs.
+  - control plane logging settings.
+  - Consider using encryption at rest and/or transit for sensitive data stored in
+    logs.
+  - Audit Access to Controls Plan Logs - Identify unauthorized actions.
+  - '"""Finds security requirements related to data protection."""'
+encryption:
+  name: encryption
+  requirements:
+  - Minimize User Access to Amazon ECR
+  - Ensure Kubernetes Secrets are encrypted using customer master keys (CMKs) managed
+    by AWS KMS
+  - Restrict container registries to only those approved
+  - Encrypt Traffic to HTTPS Load Balancer with TLS Certificates
+  - Manage Kubernetes RBAC users with aws iam authenticator for kubernetes
+  - Consider Fargate for untrusted workloads
+  - The Kubernetes control plane must encrypt sensitive data in transit.
+  - The Kubelet agent must ensure that the --read-Only Port is disabled.
+  - Verify that the Kubelet config files contain valid settings regarding encryption.
+  - Implement a mechanism to decrypt sensitive data after retrieval from storage.
+  - Consider implementing TLS/SSL support for secure communication between nodes.
+  - Audit logs regularly to detect potential breaches involving encrypted data.
+  - Use a key management solution with proper authorization controls.
+logging_and_monitoring:
+  name: logging_and_monitoring
+  requirements:
+  - Logs from Kubernetes pods should include information about pod status.
+  - Logs from Kubernetes pods should include info about pod status.
+  - Enable Audit Logs (Manual).
+  - Ensure that the kubeconfig file permission settings are restricted to 644+ restrictiveness.
+  - Monitor worker node logs.
+  - Monitor kubelet log files.
+  - Verify access control policies regarding logging & monitoring.
+  - Enable Auditing (Manual)
+  - Restrict kubeconfig file permissions to 644+.
+  - Monitor Worker Nodes' logs.
+  - Verify Access Control Policies Regarding Logging & Monitoring
+  - The logging infrastructure needs to support monitoring capabilities.
+network_security:
+  name: network_security
+  requirements:
+  - (List ONLY those relevant to Network Security.)
+  - 'NUMBERED LIST OF SECURITY REQUIREMENTS RELATED TO NETWORK SECURITY:'
+  - Restrict Access to External Networks - Implement firewall rules or other mechanisms
+    to restrict external network traffic into/out of the cluster.
+  - Restricted Access to External Networks - Implementing firewalls or similar measures
+    to limit external network traffic entering and leaving the cluster.
+  - Minimize the admission of root containers.
+  - Ensure that all Namespaces have Networks Policy Defined.
+  - Prefer using secrets as files over secret as environment variable.
+  - Consider external secret storage.
+  - Create administrative boundaries between resources using namesaps.
+  - Apply Security Context to your pods and containers.
+  - The default namespace should not be utilized.
+  - Minimize user access to Amazon E CR                                  122
+  - Restrict container registries to only those approved                      127
+  - Ensure Kubernetes secrets are encrypted using customer master keys (CMKs) managed
+    by AWS KMS (Manual)                       133
+  - Restricting access to control plane endpoint (Manual).                     136
+  - Ensuring clusters are created with private endpoints enabled and public access
+    disabled (Manual)                         139
+  - Encrypting traffic to HTTPS Load Balancer with TLS Certificates (Manual)                 144
+  - Consider Fargate for untrusted workloads (Manual).                        149
+  - Minimize user accesses to Amazon ECR
+  - Restrict Container Registries
+  - Ensure that Kubernetes Secrets are encrypted using CMKs from AWS KMS
+  - Restrict access to the Control Plane Endpoint
+  - Ensure Clusters are Created With Private Endpoints Enabled & Publicly Disabled
+  - Encrypt Traffic to
+patch_management:
+  name: patch_management
+  requirements:
+  - The document does NOT provide any specific requirements regarding patch management
+    within the context of Amazon EKS. It focuses solely on configuring EKS's infrastructure
+    rather than detailing how to manage patching processes.
+  - Implement automated processes for updating the control plane logs using an external
+    tool.
+  - Verify that the updated version of the control plane logs has been successfully
+  - '**SECURITY REQUIREMENTS RELATED TO PATCH MANAGEMENT:**'
+  - Implement automation for updating the control plane log streams.
+  - Verify successful deployment of the new control plane logs.
+  - Configure the correct settings for the API Server auditing.
+  - requirements = []
+  - of EKS clusters in different regions. The patch management process should include
+privileged_access:
+  name: privileged_access
+  requirements:
+  - Audit logs must be enabled for privileged_access.
+  - The kubelet config file needs to have restricted permissions.
+  - Verify the integrity of the kubeconfig file.
+  - Audit logs.
+  - The kubelet config file needs restrictions.
+  - The goal is to identify any potential vulnerabilities or risks associated with
+    granting privileges to users who have the "privileged_access" role. The requirement
+    should be specific and actionable.
+  - Ensure that the cluster-admin Role is only used when absolutely needed (Manual).
+  - Minimize access to secrets (Manual).
+  - Minimize wildcard use in Roles and/ClusterRoles (Manual).
+  - Minimize access to create pods (Manual).
+  - Ensure that default service account are not active. (Manual).
+  - Avoid using system:masters group (Manuel).
+  - Limit use of the Bind, Impersonate and Escalating permissions in the Kubernetes
+    cluster.(Manual).
+vulnerability_management:
+  name: vulnerability_management
+  requirements:
+  - The vulnerability management process must include regular scans, patching, remediation
+    actions, and monitoring.
+  - Maintain documentation of vulnerability management processes.
+  - Documenting vulnerability management activities.
+  - '"""Analyzes the provided text for security requirements related to vulnerability
+    management."""'
+  - 'if "vulnerability_management" in text:'
+  - Assess vulnerabilities based on risk level.
+  - Identify vulnerabilities within the AWS environment.
+  - '**SECURITY REQUIREMENTS RELATED TO VULNERABILITY MANAGEMENT:**'
+  - Identify Vulnerabilities Within the AWS Environment - [ ]
+  - Secure Access to Sensitive Data - [ ]
+  - Configure Security Groups -
