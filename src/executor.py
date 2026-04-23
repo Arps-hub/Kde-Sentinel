@@ -2,6 +2,7 @@
 
 import json
 import os
+import re
 import shutil
 import subprocess
 
@@ -31,6 +32,15 @@ KUBESCAPE_CONTROL_MAP: dict = {
     "patch_management": ["C-0078", "C-0086"],
     "privileged_access": ["C-0036", "C-0042", "C-0055"],
     "vulnerability_management": ["C-0078", "C-0080", "C-0086"],
+}
+
+KUBESCAPE_KEYWORD_CONTROL_MAP: dict = {
+    r"\b(audit|log|logging|monitor|alert)\b": ["C-0009", "C-0015", "C-0048"],
+    r"\b(rbac|role|cluster_admin|service_account|service_accounts|permission|privilege|privileged|wildcard|bind|impersonate|escalate|authorization|access)\b": ["C-0036", "C-0056", "C-0058"],
+    r"\b(secret|secrets|encrypt|encrypted|encryption|kms|tls|https|certificate|certificates)\b": ["C-0034", "C-0087", "C-0096"],
+    r"\b(network|endpoint|public|private|cidr|firewall|metadata|imds|port|ports)\b": ["C-0044", "C-0065", "C-0260"],
+    r"\b(vulnerability|vulnerabilities|image|images|container|registry|ecr|scan|patch|update)\b": ["C-0078", "C-0080", "C-0086"],
+    r"\b(kubelet|kubeconfig|config_file|configuration_file|ownership|permissions|anonymous|client_ca|read_only|kernel|iptables)\b": ["C-0036", "C-0042", "C-0055"],
 }
 
 KUBESCAPE_PATH_ENV_VAR = "KUBESCAPE_PATH"
@@ -96,6 +106,9 @@ def map_to_controls(elements: list) -> list:
             for known_key, known_controls in KUBESCAPE_CONTROL_MAP.items():
                 if known_key in key or key in known_key:
                     controls.update(known_controls)
+        for pattern, keyword_controls in KUBESCAPE_KEYWORD_CONTROL_MAP.items():
+            if re.search(pattern, key):
+                controls.update(keyword_controls)
     return sorted(controls)
 
 
@@ -224,8 +237,7 @@ def run_kubescape(zip_path: str, controls: list, kubescape_path: str = None) -> 
     scan_path = _resolve_scan_path(zip_path)
 
     if controls:
-        cmd = [binary, "scan", "control"] + controls + [
-            scan_path,
+        cmd = [binary, "scan", "control", ",".join(controls), scan_path] + [
             "--format",
             "json",
             "--logger",

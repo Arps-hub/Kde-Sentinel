@@ -13,8 +13,14 @@ def main():
     # Run PyInstaller
     cmd = [
         sys.executable, "-m", "PyInstaller",
+        "--clean",
         "--onefile",
         "--name", "project6700",
+        "--hidden-import", "fitz",
+        "--exclude-module", "torch",
+        "--exclude-module", "transformers",
+        "--exclude-module", "accelerate",
+        "--exclude-module", "huggingface_hub",
         "main.py"
     ]
     

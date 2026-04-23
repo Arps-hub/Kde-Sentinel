@@ -189,7 +189,7 @@ def test_run_kubescape_mocked(tmp_path):
     assert output == KUBESCAPE_JSON
     call_args = mock_run.call_args[0][0]
     assert any("kubescape" in arg.lower() for arg in call_args)
-    assert "C-0034" in call_args
+    assert any("C-0034" in arg for arg in call_args)
 
 
 # ---------------------------------------------------------------------------

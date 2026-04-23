@@ -1,7 +1,6 @@
 """Run all 9 required PDF input combinations and save each result to its own subfolder."""
 
 import os
-import shutil
 import subprocess
 import sys
 
@@ -18,6 +17,7 @@ COMBINATIONS = [
 ]
 
 OUTPUT_FILES = [
+    "llm_outputs.txt",
     "differing_elements.txt",
     "differing_requirements.txt",
     "controls.txt",
@@ -49,19 +49,14 @@ def run_combination(pdf1: str, pdf2: str, idx: int) -> bool:
 
     result = subprocess.run(
         [sys.executable, "main.py", pdf1_path, pdf2_path,
-         "--output-dir", OUTPUTS_DIR],
+         "--output-dir", combo_dir,
+         "--force-extract"],
         cwd=BASE_DIR,
     )
 
     if result.returncode != 0:
         print(f"ERROR: combination {combo_name} failed with exit code {result.returncode}")
         return False
-
-    # Copy outputs to per-combination subfolder
-    for fname in OUTPUT_FILES:
-        src = os.path.join(OUTPUTS_DIR, fname)
-        if os.path.isfile(src):
-            shutil.copy2(src, os.path.join(combo_dir, fname))
 
     print(f"[{idx}/9] Saved to outputs/{combo_name}/")
     return True

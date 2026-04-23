@@ -12,7 +12,7 @@ import argparse
 import os
 import sys
 
-from src.utils import ensure_dir
+from src.utils import ensure_dir, write_text
 from src.extractor import run_extraction, zero_shot_prompt, few_shot_prompt, chain_of_thought_prompt
 from src.comparator import run_comparison
 from src.executor import run_executor
@@ -52,6 +52,11 @@ def parse_args():
         default=None,
         help="Optional full path to the kubescape executable.",
     )
+    parser.add_argument(
+        "--force-extract",
+        action="store_true",
+        help="Regenerate KDE YAML files even if they already exist.",
+    )
     return parser.parse_args()
 
 
@@ -69,15 +74,21 @@ def main():
     stem1 = _stem(args.pdf1)
     stem2 = _stem(args.pdf2)
 
-    yaml1 = os.path.join(args.output_dir, f"{stem1}-kdes.yaml")
-    yaml2 = os.path.join(args.output_dir, f"{stem2}-kdes.yaml")
+    duplicate_input_name = stem1 == stem2
+    yaml1_name = f"{stem1}-doc1-kdes.yaml" if duplicate_input_name else f"{stem1}-kdes.yaml"
+    yaml2_name = f"{stem2}-doc2-kdes.yaml" if duplicate_input_name else f"{stem2}-kdes.yaml"
+    yaml1 = os.path.join(args.output_dir, yaml1_name)
+    yaml2 = os.path.join(args.output_dir, yaml2_name)
     llm_log = os.path.join(args.output_dir, "llm_outputs.txt")
     elements_txt = os.path.join(args.output_dir, "differing_elements.txt")
     reqs_txt = os.path.join(args.output_dir, "differing_requirements.txt")
     controls_txt = os.path.join(args.output_dir, "controls.txt")
     out_csv = os.path.join(args.output_dir, "kubescape_results.csv")
 
-    if os.path.isfile(yaml1):
+    if args.force_extract:
+        write_text("", llm_log)
+
+    if os.path.isfile(yaml1) and not args.force_extract:
         print(f"[1/5] KDEs for '{args.pdf1}' already extracted, skipping.")
         print(f"      -> {yaml1}")
     else:
@@ -85,7 +96,7 @@ def main():
         run_extraction(args.pdf1, prompt_fn, prompt_type, yaml1, llm_log)
         print(f"      -> {yaml1}")
 
-    if os.path.isfile(yaml2):
+    if os.path.isfile(yaml2) and not args.force_extract:
         print(f"[2/5] KDEs for '{args.pdf2}' already extracted, skipping.")
         print(f"      -> {yaml2}")
     else:

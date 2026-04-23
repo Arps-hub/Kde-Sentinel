@@ -105,7 +105,8 @@ python main.py <pdf1> <pdf2>
 python run_all_combinations.py
 ```
 
-This creates per-combination output folders under `outputs/`.
+This creates per-combination output folders under `outputs/`, for example
+`outputs/cis-r1_vs_cis-r2/`.
 
 ## Tests
 
@@ -132,7 +133,9 @@ The same test suite is executed on every push / PR by the GitHub Actions workflo
 
 ## Output Files
 
-The application writes the following files to `outputs/`:
+The application writes the following files to the selected output directory. When
+`run_all_combinations.py` is used, each required input pair gets its own folder
+under `outputs/`.
 
 | File | Purpose |
 |---|---|

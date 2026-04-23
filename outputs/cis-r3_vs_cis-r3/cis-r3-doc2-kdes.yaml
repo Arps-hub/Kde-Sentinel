@@ -1,0 +1,710 @@
+a_client_ca_file_is_configured:
+  name: a_client_ca_file_is_configured
+  requirements:
+  - Ensure that a Client CA File is Configured.
+  - Enable Kubelet authentication using certificates.
+  - The connections from the apiserver to the kubelet are used for fetching logs for
+    pods, attaching (through kubectl) to running pods, and using the kubelet’s port-forwarding
+    functionality. These connections terminate at the kubelet’s HTTPS endpoint. By
+    default, the apiserver does not verify the kubelet’s serving certificate, which
+    makes the connection subject to man-in-the-middle attacks, and unsafe to run over
+    untrusted and/or public networks. Enabling Kubelet certificate authentication
+    ensures that the apiserver could authenticate the Kubelet before submitting any
+    requests.
+  - 'Remediation Method 1: If configuring via the Kubelet config file, you first need
+    to locate the file. To do this, SSH to each node and execute the following command
+    to find the kubelet process: ps -ef | grep kubelet The output of the above command
+    provides details of the active kubelet process, from which we can see the location
+    of the configuration file provided to the kubelet service with the --config argument.
+    The file can be viewed with a command such as more or less, like so: sudo less
+    /path/to/kubelet-config.json Configure the client certificate authority file by
+    setting the following parameter appropriately: Page 48 Internal Only - General
+    "authentication": { "x509": {"clientCAFile":.'
+access_to_create_pods:
+  name: access_to_create_pods
+  requirements:
+  - Minimize access to create pods.
+  - The ability to create pods in a namespace can provide a number of opportunities
+    for privilege escalation, such as assigning privileged service accounts to these
+    pods or mounting hostPaths with access to sensitive data (unless Pod Security
+    Policies are implemented to restrict this access) As such, access to create new
+    pods should be restricted to the smallest possible group of users.
+  - The ability to create pods in a cluster opens up possibilities for privilege escalation
+    and should be restricted, where possible.
+  - Where possible, remove create access to pod objects in the cluster.
+access_to_secrets:
+  name: access_to_secrets
+  requirements:
+  - Minimize access to secrets.
+  - The Kubernetes API stores secrets, which may be service account tokens for the
+    Kubernetes API or credentials used by workloads in the cluster. Access to these
+    secrets should be restricted to the smallest possible group of users to reduce
+    the risk of privilege escalation.
+  - Inappropriate access to secrets stored within the Kubernetes cluster can allow
+    for an attacker to gain additional access to the Kubernetes cluster or external
+    resources whose credentials are stored as secrets.
+  - Where possible, remove get, list and watch access to secret objects in the cluster.
+access_to_the_control_plane_endpoint:
+  name: access_to_the_control_plane_endpoint
+  requirements:
+  - Restrict Access to the Control Plane Endpoint.
+  - Enable Endpoint Private Access to restrict access to the cluster's control plane
+    to only an allowlist of authorized IPs.
+  - 'Authorized networks are a way of specifying a restricted range of IP addresses
+    that are permitted to access your cluster''s control plane. Kubernetes Engine
+    uses both Transport Layer Security (TLS) and authentication to provide secure
+    access to your cluster''s control plane from the public internet. This provides
+    you the flexibility to administer your cluster from anywhere; however, you might
+    want to further restrict access to a set of IP addresses that you control. You
+    can set this restriction by specifying an authorized network. Restricting access
+    to an authorized network can provide additional security benefits for your container
+    cluster, including: Better protection from outsider attacks:.'
+  - By enabling private endpoint access to the Kubernetes API server, all communication
+    between your nodes and the API server stays within your VPC. You can also limit
+    the IP addresses that can access your API server from the internet, or completely
+    disable internet access to the API server. With this in mind, you can update your
+    cluster accordingly using the AWS CLI to ensure that Private Endpoint Access is
+    enabled. If you choose to also enable Public Endpoint Access then you should also
+    configure a list of allowable CIDR blocks, resulting in restricted access from
+    the internet. If you specify no CIDR blocks, then the public API server endpoint
+    is able to receive and process requests from all.
+all_namespaces_have_network_policies_defined:
+  name: all_namespaces_have_network_policies_defined
+  requirements:
+  - Ensure that all Namespaces have Network Policies defined.
+  - Use network policies to isolate traffic in your cluster network.
+  - Running different applications on the same Kubernetes cluster creates a risk of
+    one compromised application attacking a neighboring application. Network segmentation
+    is important to ensure that containers can communicate only with those they are
+    supposed to. A network policy is a specification of how selections of pods are
+    allowed to communicate with each other and other network endpoints. Once there
+    is any Network Policy in a namespace selecting a particular pod, that pod will
+    reject any connections that are not allowed by any Network Policy. Other pods
+    in the namespace that are not selected by any Network Policy will continue to
+    accept all traffic"
+  - Follow the documentation and create NetworkPolicy objects as you need them.
+audit_logs:
+  name: audit_logs
+  requirements:
+  - Enable audit Logs.
+  - Control plane logs provide visibility into operation of the EKS Control plane
+    component systems. The API server audit logs record all accepted and rejected
+    requests in the cluster. When enabled via EKS configuration the control plane
+    logs for a cluster are exported to a CloudWatch Log Group for persistence.
+  - Audit logs enable visibility into all API server requests from authentic and anonymous
+    sources. Stored log data can be analyzed manually or with tools to identify and
+    understand anomalous or negative activity and lead to intelligent remediations.
+  - 'From Console: 1. For each EKS Cluster in each region; 2. Go to ''Amazon EKS''
+    > ''Clusters'' > '''' > ''Configuration'' > ''Logging''. 3. Click ''Manage logging''.
+    4. Ensure that all options are toggled to ''Enabled''. API server: Enabled'
+audit_logs_are_collected_and_managed:
+  name: audit_logs_are_collected_and_managed
+  requirements:
+  - Ensure audit logs are collected and managed.
+  - Ensure that audit logs are collected and managed in accordance with the enterprise’s
+    audit log management process across all Kubernetes components.
+  - Audit logs provide visibility into the activities occurring within a Kubernetes
+    cluster, enabling the detection and investigation of security incidents and policy
+    violations. Proper collection and management of audit logs are essential for maintaining
+    an audit trail and ensuring compliance with security policies.
+  - '1. Create or update the audit-policy.yaml to specify the audit logging configuration:
+    Page 22 Internal Only - General apiVersion: audit.k8s.io/v1 kind: Policy rules:
+    - level: Metadata resources: - group: "" resources: ["pods"] 2. Apply the audit
+    policy configuration to the cluster: kubectl apply -f <path-to-audit-policy>.yaml
+    3. Ensure audit logs are forwarded to a centralized logging system like CloudWatch,
+    Elasticsearch, or another log management solution: kubectl create configmap cluster-audit-policy
+    --from-file=audit-policy.yaml - n kube-system kubectl apply -f - <<EOF apiVersion:
+    v1 kind: Pod metadata: name: audit-logging namespace: kube-system spec: containers:
+    - name:.'
+cluster_access_to_read_only_for_amazon_ecr:
+  name: cluster_access_to_read_only_for_amazon_ecr
+  requirements:
+  - Minimize cluster access to read-only for Amazon ECR.
+  - Configure the Cluster Service Account with Storage Object Viewer Role to only
+    allow read-only access to Amazon ECR.
+  - The Cluster Service Account does not require administrative access to Amazon ECR,
+    only requiring pull access to containers to deploy onto Amazon EKS. Restricting
+    permissions follows the principles of least privilege and prevents credentials
+    from being abused beyond the required role.
+  - 'You can use your Amazon ECR images with Amazon EKS, but you need to satisfy the
+    following prerequisites. The Amazon EKS worker node IAM role (NodeInstanceRole)
+    that you use with your worker nodes must possess the following IAM policy permissions
+    for Amazon ECR. Page 119 Internal Only - General { "Version": "2012-10-17", "Statement":
+    [ { "Effect": "Allow", "Action": [ "ecr:BatchCheckLayerAvailability", "ecr:BatchGetImage",
+    "ecr:GetDownloadUrlForLayer", "ecr:GetAuthorizationToken" ], "Resource": "*" }
+    ] }'
+clusters_are_created_with_private_endpoint_enabled_and_public_access_disabled:
+  name: clusters_are_created_with_private_endpoint_enabled_and_public_access_disabled
+  requirements:
+  - Ensure clusters are created with Private Endpoint Enabled and Public Access Disabled.
+  - Disable access to the Kubernetes API from outside the node network if it is not
+    required.
+  - In a private cluster, the master node has two endpoints, a private and public
+    endpoint. The private endpoint is the internal IP address of the master, behind
+    an internal load balancer in the master's VPC network. Nodes communicate with
+    the master using the private endpoint. The public endpoint enables the Kubernetes
+    API to be accessed from outside the master's VPC network. Although Kubernetes
+    API requires an authorized token to perform sensitive actions, a vulnerability
+    could potentially expose the Kubernetes publicly with unrestricted access. Additionally,
+    an attacker may be able to identify the current cluster and Kubernetes API version
+    and determine whether it is vulnerable to an attack..
+  - 'By enabling private endpoint access to the Kubernetes API server, all communication
+    between your nodes and the API server stays within your VPC. With this in mind,
+    you can update your cluster accordingly using the AWS CLI to ensure that Private
+    Endpoint Access is enabled. For example, the following command would enable private
+    access to the Kubernetes API and ensure that no public access is permitted: aws
+    eks update-cluster-config --region $AWS_REGION --name $CLUSTER_NAME --resources-vpc-config
+    endpointPrivateAccess=true,endpointPublicAccess=false Note: For more detailed
+    information, see the EKS Cluster Endpoint documentation link in the references
+    section.'
+clusters_are_created_with_private_nodes:
+  name: clusters_are_created_with_private_nodes
+  requirements:
+  - Ensure clusters are created with Private Nodes.
+  - Disable public IP addresses for cluster nodes, so that they only have private
+    IP addresses. Private Nodes are nodes with no public IP addresses.
+  - Disabling public IP addresses on cluster nodes restricts access to only internal
+    networks, forcing attackers to obtain local network access before attempting to
+    compromise the underlying Kubernetes hosts.
+  - 'To disable public IP addresses for EKS nodegroup nodes using the AWS CLI, you
+    must ensure the following when running create-nodegroup: Use private subnets (that
+    don''t auto-assign public IPs). Set associatePublicIpAddress to false. Page 135
+    Internal Only - General "NetworkInterfaces": [{ "AssociatePublicIpAddress": false
+    }] You can restrict access to the control plane endpoint using: aws eks update-cluster-config
+    \ --name <cluster-name> \ --region <region> \ --resources-vpc-config endpointPublicAccess=false,
+    endpointPrivateAccess=true This makes the API server private, but does not affect
+    node IPs. To ensure nodes use only private IPs: Use aws eks create-nodegroup with
+    only private subnets,.'
+cni_plugin_supports_network_policies:
+  name: cni_plugin_supports_network_policies
+  requirements:
+  - Ensure CNI plugin supports network policies.
+  - There are a variety of CNI plugins available for Kubernetes. If the CNI in use
+    does not support Network Policies it may not be possible to effectively restrict
+    traffic in the cluster.
+  - Kubernetes network policies are enforced by the CNI plugin in use. As such it
+    is important to ensure that the CNI plugin supports both Ingress and Egress network
+    policies.
+  - As with RBAC policies, network policies should adhere to the policy of least privileged
+    access. Start by creating a deny all policy that restricts all inbound and outbound
+    traffic from a namespace or create a global policy using Calico.
+container_registries_to_only_those_approved:
+  name: container_registries_to_only_those_approved
+  requirements:
+  - Minimize Container Registries to only those approved.
+  - Use approved container registries.
+  - Allowing unrestricted access to external container registries provides the opportunity
+    for malicious or unapproved containers to be deployed into the cluster. Allowlisting
+    only approved container registries reduces this risk.
+  - 'To minimize AWS ECR container registries to only those approved, you can follow
+    these steps: 1. Define your approval criteria: Determine the criteria that containers
+    must meet to be considered approved. This can include factors such as security,
+    compliance, compatibility, and other requirements. 2. Identify all existing ECR
+    registries: Identify all ECR registries that are currently being used in your
+    organization. 3. Evaluate ECR registries against approval criteria: Evaluate each
+    ECR registry against your approval criteria to determine whether it should be
+    approved or not. This can be done by reviewing the registry settings and configuration,
+    as well as conducting security assessments and.'
+default_service_accounts_are_not_actively_used:
+  name: default_service_accounts_are_not_actively_used
+  requirements:
+  - Ensure that default service accounts are not actively used.
+  - The default service account should not be used to ensure that rights granted to
+    applications can be more easily audited and reviewed.
+  - Kubernetes provides a default service account which is used by cluster workloads
+    where no specific service account is assigned to the pod. Where access to the
+    Kubernetes API from a pod is required, a specific service account should be created
+    for that pod, and rights granted to that service account. The default service
+    account should be configured such that it does not provide a service account token
+    and does not have any explicit rights assignments.
+  - 'Create explicit service accounts wherever a Kubernetes workload requires specific
+    access to the Kubernetes API server. Modify the configuration of each default
+    service account to include this value automountServiceAccountToken: false Automatic
+    remediation for the default account: kubectl patch serviceaccount default -p $''automountServiceAccountToken:
+    false'' Page 75 Internal Only - General'
+external_secret_storage:
+  name: external_secret_storage
+  requirements:
+  - Consider external secret storage.
+  - Consider the use of an external secrets storage and management system, instead
+    of using Kubernetes Secrets directly, if you have more complex secret management
+    needs. Ensure the solution requires authentication to access secrets, has auditing
+    of access to and use of secrets, and encrypts secrets. Some solutions also make
+    it easier to rotate secrets.
+  - Kubernetes supports secrets as first-class objects, but care needs to be taken
+    to ensure that access to secrets is carefully limited. Using an external secrets
+    provider can ease the management of access to secrets, especially where secrests
+    are used across both Kubernetes and non-Kubernetes environments.
+  - Refer to the secrets management options offered by your cloud provider or a third-party
+    secrets management solution.
+image_vulnerability_scanning_using_amazon_ecr_image_scanning_or_a_third_party_provider:
+  name: image_vulnerability_scanning_using_amazon_ecr_image_scanning_or_a_third_party_provider
+  requirements:
+  - Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third
+    party provider.
+  - Scan images being deployed to Amazon EKS for vulnerabilities.
+  - Vulnerabilities in software packages can be exploited by hackers or malicious
+    users to obtain unauthorized access to local cloud resources. Amazon ECR and other
+    third party products allow images to be scanned for known vulnerabilities.
+  - 'To utilize AWS ECR for Image scanning please follow the steps below: To create
+    a repository configured for scan on push (AWS CLI) aws ecr create-repository --repository-name
+    $REPO_NAME --image-scanning- configuration scanOnPush=true --region $REGION_CODE
+    To edit the settings of an existing repository (AWS CLI) aws ecr put-image-scanning-configuration
+    --repository-name $REPO_NAME -- image-scanning-configuration scanOnPush=true --region
+    $REGION_CODE Use the following steps to start a manual image scan using the AWS
+    Management Console. 1. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories.
+    2. From the navigation bar, choose the Region to create your repository in..'
+kubernetes_rbac_users_with_aws_iam_authenticator_for_kubernetes_or_upgrade_to_aws_cli_v1_16_156_or_greater:
+  name: kubernetes_rbac_users_with_aws_iam_authenticator_for_kubernetes_or_upgrade_to_aws_cli_v1_16_156_or_greater
+  requirements:
+  - Manage Kubernetes RBAC users with AWS IAM Authenticator for Kubernetes or Upgrade
+    to AWS CLI v1.16.156 or greater.
+  - Amazon EKS uses IAM to provide authentication to your Kubernetes cluster through
+    the AWS IAM Authenticator for Kubernetes. You can configure the stock kubectl
+    client to work with Amazon EKS by installing the AWS IAM Authenticator for Kubernetes
+    and modifying your kubectl configuration file to use it for authentication.
+  - On- and off-boarding users is often difficult to automate and prone to error.
+    Using a single source of truth for user permissions reduces the number of locations
+    that an individual must be off-boarded from, and prevents users gaining unique
+    permissions sets that increase the cost of audit.
+  - 'Refer to the ''Managing users or IAM roles for your cluster'' in Amazon EKS documentation.
+    Note: If using AWS CLI version 1.16.156 or later there is no need to install the
+    AWS IAM Authenticator anymore. The relevant AWS CLI commands, depending on the
+    use case, are: Page 141 Internal Only - General aws eks update-kubeconfig aws
+    eks get-token'
+kubernetes_secrets_are_encrypted_using_customer_master_keys_cmks_managed_in_aws_kms:
+  name: kubernetes_secrets_are_encrypted_using_customer_master_keys_cmks_managed_in_aws_kms
+  requirements:
+  - Ensure Kubernetes Secrets are encrypted using Customer Master Keys (CMKs) managed
+    in AWS KMS.
+  - Encrypt Kubernetes secrets, stored in etcd, using secrets encryption feature during
+    Amazon EKS cluster creation.
+  - Kubernetes can store secrets that pods can access via a mounted volume. Today,
+    Kubernetes secrets are stored with Base64 encoding, but encrypting is the recommended
+    approach. Amazon EKS clusters version 1.13 and higher support the capability of
+    encrypting your Kubernetes secrets using AWS Key Management Service (KMS) Customer
+    Managed Keys (CMK). The only requirement is to enable the encryption provider
+    support during EKS cluster creation. Use AWS Key Management Service (KMS) keys
+    to provide envelope encryption of Kubernetes secrets stored in Amazon EKS. Implementing
+    envelope encryption is considered a security best practice for applications that
+    store sensitive data and is part of a defense.
+  - This process can only be performed during Cluster Creation. Enable 'Secrets Encryption'
+    during Amazon EKS cluster creation as described in the links within the 'References'
+    section.
+network_policy_is_enabled_and_set_as_appropriate:
+  name: network_policy_is_enabled_and_set_as_appropriate
+  requirements:
+  - Ensure Network Policy is Enabled and set as appropriate.
+  - 'Amazon EKS provides two ways to implement network policy. You choose a network
+    policy option when you create an EKS cluster. The policy option can''t be changed
+    after the cluster is created: Calico Network Policies, an open-source network
+    and network security solution founded by Tigera. Both implementations use Linux
+    iptables to enforce the specified policies. Policies are translated into sets
+    of allowed and disallowed IP pairs. These pairs are then programmed as IPTable
+    filter rules.'
+  - By default, all pod to pod traffic within a cluster is allowed. Network Policy
+    creates a pod-level firewall that can be used to restrict traffic between sources.
+    Pod traffic is restricted by having a Network Policy that selects it (through
+    the use of labels). Once there is any Network Policy in a namespace selecting
+    a particular pod, that pod will reject any connections that are not allowed by
+    any Network Policy. Other pods in the namespace that are not selected by any Network
+    Policy will continue to accept all traffic. Network Policies are managed via the
+    Kubernetes Network Policy API and enforced by a network plugin, simply creating
+    the resource without a compatible network plugin to.
+  - Utilize Calico or other network policy engine to segment and isolate your traffic.
+service_account_tokens_are_only_mounted_where_necessary:
+  name: service_account_tokens_are_only_mounted_where_necessary
+  requirements:
+  - Ensure that Service Account Tokens are only mounted where necessary.
+  - Service accounts tokens should not be mounted in pods except where the workload
+    running in the pod explicitly needs to communicate with the API server
+  - Mounting service account tokens inside pods can provide an avenue for privilege
+    escalation attacks where an attacker is able to compromise a single pod in the
+    cluster. Avoiding mounting these tokens removes this attack avenue.
+  - Regularly review pod and service account objects in the cluster to ensure that
+    the automountServiceAccountToken setting is false for pods and accounts that do
+    not explicitly require API server access.
+the_admission_of_containers_wishing_to_share_the_host_ipc_namespace:
+  name: the_admission_of_containers_wishing_to_share_the_host_ipc_namespace
+  requirements:
+  - Minimize the admission of containers wishing to share the host IPC namespace.
+  - Do not generally permit containers to be run with the hostIPC flag set to true.
+  - A container running in the host's IPC namespace can use IPC to interact with processes
+    outside the container. There should be at least one admission control policy defined
+    which does not permit containers to share the host IPC namespace. If you need
+    to run containers which require hostIPC, this should be defined in a separate
+    policy and you should carefully check to ensure that only limited service accounts
+    and users are given permission to use that policy.
+  - Add policies to each namespace in the cluster which has user workloads to restrict
+    the admission of hostIPC containers.
+the_admission_of_containers_wishing_to_share_the_host_network_namespace:
+  name: the_admission_of_containers_wishing_to_share_the_host_network_namespace
+  requirements:
+  - Minimize the admission of containers wishing to share the host network namespace.
+  - Do not generally permit containers to be run with the hostNetwork flag set to
+    true.
+  - A container running in the host's network namespace could access the local loopback
+    device, and could access network traffic to and from other pods. There should
+    be at least one admission control policy defined which does not permit containers
+    to share the host network namespace. If you need to run containers which require
+    access to the host's network namespaces, this should be defined in a separate
+    policy and you should carefully check to ensure that only limited service accounts
+    and users are given permission to use that policy.
+  - Add policies to each namespace in the cluster which has user workloads to restrict
+    the admission of hostNetwork containers.
+the_admission_of_containers_wishing_to_share_the_host_process_id_namespace:
+  name: the_admission_of_containers_wishing_to_share_the_host_process_id_namespace
+  requirements:
+  - Minimize the admission of containers wishing to share the host process ID namespace.
+  - Do not generally permit containers to be run with the hostPID flag set to true.
+  - A container running in the host's PID namespace can inspect processes running
+    outside the container. If the container also has access to ptrace capabilities
+    this can be used to escalate privileges outside of the container. There should
+    be at least one admission control policy defined which does not permit containers
+    to share the host PID namespace. If you need to run containers which require hostPID,
+    this should be defined in a separate policy and you should carefully check to
+    ensure that only limited service accounts and users are given permission to use
+    that policy.
+  - Add policies to each namespace in the cluster which has user workloads to restrict
+    the admission of hostPID containers.
+the_admission_of_containers_with_allowprivilegeescalation:
+  name: the_admission_of_containers_with_allowprivilegeescalation
+  requirements:
+  - Minimize the admission of containers with allowPrivilegeEscalation.
+  - Do not generally permit containers to be run with the allowPrivilegeEscalation
+    flag set to true. Allowing this right can lead to a process running a container
+    getting more rights than it started with. It's important to note that these rights
+    are still constrained by the overall container sandbox, and this setting does
+    not relate to the use of privileged containers.
+  - A container running with the allowPrivilegeEscalation flag set to true may have
+    processes that can gain more privileges than their parent. There should be at
+    least one admission control policy defined which does not permit containers to
+    allow privilege escalation. The option exists (and is defaulted to true) to permit
+    setuid binaries to run. If you have need to run containers which use setuid binaries
+    or require privilege escalation, this should be defined in a separate policy and
+    you should carefully check to ensure that only limited service accounts and users
+    are given permission to use that policy.
+  - Add policies to each namespace in the cluster which has user workloads to restrict
+    the admission of containers with .spec.allowPrivilegeEscalation set to true.
+the_admission_of_privileged_containers:
+  name: the_admission_of_privileged_containers
+  requirements:
+  - Minimize the admission of privileged containers.
+  - Do not generally permit containers to be run with the securityContext.privileged
+    flag set to true.
+  - Privileged containers have access to all Linux Kernel capabilities and devices.
+    A container running with full privileges can do almost everything that the host
+    can do. This flag exists to allow special use-cases, like manipulating the network
+    stack and accessing devices. There should be at least one admission control policy
+    defined which does not permit privileged containers. If you need to run privileged
+    containers, this should be defined in a separate policy and you should carefully
+    check to ensure that only limited service accounts and users are given permission
+    to use that policy.
+  - 'Add policies to each namespace in the cluster which has user workloads to restrict
+    the admission of privileged containers. To enable PSA for a namespace in your
+    cluster, set the pod- security.kubernetes.io/enforce label with the policy value
+    you want to enforce. kubectl label --overwrite ns NAMESPACE pod- security.kubernetes.io/enforce=restricted
+    The above command enforces the restricted policy for the NAMESPACE namespace.
+    You can also enable Pod Security Admission for all your namespaces. For example:
+    kubectl label --overwrite ns --all pod-security.kubernetes.io/warn=baseline'
+the_anonymous_auth_is_not_enabled:
+  name: the_anonymous_auth_is_not_enabled
+  requirements:
+  - Ensure that the Anonymous Auth is Not Enabled.
+  - Disable anonymous requests to the Kubelet server.
+  - When enabled, requests that are not rejected by other configured authentication
+    methods are treated as anonymous requests. These requests are then served by the
+    Kubelet server. You should rely on authentication to authorize access and disallow
+    anonymous requests.
+  - 'Remediation Method 1: If configuring via the Kubelet config file, you first need
+    to locate the file. To do this, SSH to each node and execute the following command
+    to find the kubelet process: ps -ef | grep kubelet The output of the above command
+    provides details of the active kubelet process, from which we can see the location
+    of the configuration file provided to the kubelet service with the --config argument.
+    The file can be viewed with a command such as more or less, like so: sudo less
+    /path/to/kubelet-config.json Disable Anonymous Authentication by setting the following
+    parameter: Page 40 Internal Only - General "authentication": { "anonymous": {
+    "enabled": false } } Remediation Method.'
+the_authorization_mode_argument_is_not_set_to_alwaysallow:
+  name: the_authorization_mode_argument_is_not_set_to_alwaysallow
+  requirements:
+  - Ensure that the --authorization-mode argument is not set to AlwaysAllow.
+  - Do not allow all requests. Enable explicit authorization.
+  - Kubelets can be configured to allow all authenticated requests (even anonymous
+    ones) without needing explicit authorization checks from the apiserver. You should
+    restrict this behavior and only allow explicitly authorized requests.
+  - 'Remediation Method 1: If configuring via the Kubelet config file, you first need
+    to locate the file. To do this, SSH to each node and execute the following command
+    to find the kubelet process: ps -ef | grep kubelet The output of the above command
+    provides details of the active kubelet process, from which we can see the location
+    of the configuration file provided to the kubelet service with the --config argument.
+    The file can be viewed with a command such as more or less, like so: sudo less
+    /path/to/kubelet-config.json Enable Webhook Authentication by setting the following
+    parameter: Page 44 Internal Only - General "authentication": { "webhook": { "enabled":
+    true } } Next, set the.'
+the_cluster_admin_role_is_only_used_where_required:
+  name: the_cluster_admin_role_is_only_used_where_required
+  requirements:
+  - Ensure that the cluster-admin role is only used where required.
+  - The RBAC role cluster-admin provides wide-ranging powers over the environment
+    and should be used only where and when needed.
+  - Kubernetes provides a set of default roles where RBAC is used. Some of these roles
+    such as cluster-admin provide wide-ranging privileges which should only be applied
+    where absolutely necessary. Roles such as cluster-admin allow super-user access
+    to perform any action on any resource. When used in a ClusterRoleBinding, it gives
+    full control over every resource in the cluster and in all namespaces. When used
+    in a RoleBinding, it gives full control over every resource in the RoleBinding's
+    namespace, including the namespace itself.
+  - 'Identify all ClusterRoleBindings to the cluster-admin role. Check if they are
+    used and if they need this role or if they could use a role with fewer privileges.
+    Where possible, first bind users to a lower privileged role and then remove the
+    ClusterRoleBinding to the cluster-admin role : Page 67 Internal Only - General
+    kubectl delete clusterrolebinding [name]'
+the_eventrecordqps_argument_is_set_to_0_or_a_level_which_ensures_appropriate_event_capture:
+  name: the_eventrecordqps_argument_is_set_to_0_or_a_level_which_ensures_appropriate_event_capture
+  requirements:
+  - Ensure that the --eventRecordQPS argument is set to 0 or a level which ensures
+    appropriate event capture.
+  - Security relevant information should be captured. The eventRecordQPS on the Kubelet
+    configuration can be used to limit the rate at which events are gathered and sets
+    the maximum event creations per second. Setting this too low could result in relevant
+    events not being logged, however the unlimited setting of 0 could result in a
+    denial of service on the kubelet.
+  - It is important to capture all events and not restrict event creation. Events
+    are an important source of security information and analytics that ensure that
+    your environment is consistently monitored using the event data.
+  - 'If using a Kubelet config file, edit the file to set eventRecordQPS: to an appropriate
+    level. If using command line arguments, edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+    on each worker node and set the below parameter in KUBELET_SYSTEM_PODS_ARGS variable.
+    Based on your system, restart the kubelet service. For example: Page 58 Internal
+    Only - General systemctl daemon-reload systemctl restart kubelet.service'
+the_kubeconfig_file_permissions_are_set_to_644_or_more_restrictive:
+  name: the_kubeconfig_file_permissions_are_set_to_644_or_more_restrictive
+  requirements:
+  - Ensure that the kubeconfig file permissions are set to 644 or more restrictive.
+  - If kubelet is running, and if it is configured by a kubeconfig file, ensure that
+    the proxy kubeconfig file has permissions of 644 or more restrictive.
+  - The kubelet kubeconfig file controls various parameters of the kubelet service
+    in the worker node. You should restrict its file permissions to maintain the integrity
+    of the file. The file should be writable by only the administrators on the system.
+    It is possible to run kubelet with the kubeconfig parameters configured as a Kubernetes
+    ConfigMap instead of a file. In this case, there is no proxy kubeconfig file.
+  - Run the below command (based on the file location on your system) on the each
+    worker node. For example, Page 27 Internal Only - General chmod 644 <kubeconfig
+    file>
+the_kubelet_configuration_file_has_permissions_set_to_644_or_more_restrictive:
+  name: the_kubelet_configuration_file_has_permissions_set_to_644_or_more_restrictive
+  requirements:
+  - Ensure that the kubelet configuration file has permissions set to 644 or more
+    restrictive.
+  - Ensure that if the kubelet refers to a configuration file with the --config argument,
+    that file has permissions of 644 or more restrictive.
+  - The kubelet reads various parameters, including security settings, from a config
+    file specified by the --config argument. If this file is specified you should
+    restrict its file permissions to maintain the integrity of the file. The file
+    should be writable by only the administrators on the system.
+  - Run the following command (using the config file location identified in the Audit
+    step) chmod 644 /etc/kubernetes/kubelet/config.json
+the_kubelet_configuration_file_ownership_is_set_to_root_root:
+  name: the_kubelet_configuration_file_ownership_is_set_to_root_root
+  requirements:
+  - Ensure that the kubelet configuration file ownership is set to root:root.
+  - Ensure that if the kubelet refers to a configuration file with the --config argument,
+    that file is owned by root:root.
+  - The kubelet reads various parameters, including security settings, from a config
+    file specified by the --config argument. If this file is specified you should
+    restrict its file permissions to maintain the integrity of the file. The file
+    should be writable by only the administrators on the system.
+  - Run the following command (using the config file location identified in the Audit
+    step) Page 36 Internal Only - General chown root:root /etc/kubernetes/kubelet/config.json
+the_kubelet_kubeconfig_file_ownership_is_set_to_root_root:
+  name: the_kubelet_kubeconfig_file_ownership_is_set_to_root_root
+  requirements:
+  - Ensure that the kubelet kubeconfig file ownership is set to root:root.
+  - If kubelet is running, ensure that the file ownership of its kubeconfig file is
+    set to root:root.
+  - The kubeconfig file for kubelet controls various parameters for the kubelet service
+    in the worker node. You should set its file ownership to maintain the integrity
+    of the file. The file should be owned by root:root.
+  - Run the below command (based on the file location on your system) on each worker
+    node. For example, chown root:root <proxy kubeconfig file>
+the_make_iptables_util_chains_argument_is_set_to_true:
+  name: the_make_iptables_util_chains_argument_is_set_to_true
+  requirements:
+  - Ensure that the --make-iptables-util-chains argument is set to true.
+  - Allow Kubelet to manage iptables.
+  - Kubelets can automatically manage the required changes to iptables based on how
+    you choose your networking options for the pods. It is recommended to let kubelets
+    manage the changes to iptables. This ensures that the iptables configuration remains
+    in sync with pods networking configuration. Manually configuring iptables with
+    dynamic pod network configuration changes might hamper the communication between
+    pods/containers and to the outside world. You might have iptables rules too restrictive
+    or too open.
+  - 'Remediation Method 1: If modifying the Kubelet config file, edit the kubelet-config.json
+    file /etc/kubernetes/kubelet/kubelet-config.json and set the below parameter to
+    true "makeIPTablesUtilChains": true Ensure that /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    does not set the --make-iptables-util-chains argument because that would override
+    your Kubelet config file. Remediation Method 2: If using executable arguments,
+    edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    on each worker node and add the below parameter at the end of the KUBELET_ARGS
+    variable string. --make-iptables-util-chains:true Remediation Method 3: If using
+    the api.'
+the_read_only_port_is_disabled:
+  name: the_read_only_port_is_disabled
+  requirements:
+  - Ensure that the --read-only-port is disabled.
+  - Disable the read-only port.
+  - The Kubelet process provides a read-only API in addition to the main Kubelet API.
+    Unauthenticated access is provided to this read-only API which could possibly
+    retrieve potentially sensitive information about the cluster.
+  - 'If modifying the Kubelet config file, edit the kubelet-config.json file /etc/kubernetes/kubelet/kubelet-config.json
+    and set the below parameter to 0 Page 50 Internal Only - General "readOnlyPort":
+    0 If using executable arguments, edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    on each worker node and add the below parameter at the end of the KUBELET_ARGS
+    variable string. --read-only-port=0 For each remediation: Based on your system,
+    restart the kubelet service and check status systemctl daemon-reload systemctl
+    restart kubelet.service systemctl status kubelet -l'
+the_rotate_certificates_argument_is_not_present_or_is_set_to_true:
+  name: the_rotate_certificates_argument_is_not_present_or_is_set_to_true
+  requirements:
+  - Ensure that the --rotate-certificates argument is not present or is set to true.
+  - Enable kubelet client certificate rotation.
+  - 'The --rotate-certificates setting causes the kubelet to rotate its client certificates
+    by creating new CSRs as its existing credentials expire. This automated periodic
+    rotation ensures that the there is no downtime due to expired certificates and
+    thus addressing availability in the CIA (Confidentiality, Integrity, and Availability)
+    security triad. Note: This recommendation only applies if you let kubelets get
+    their certificates from the API server. In case your kubelet certificates come
+    from an outside authority/tool (e.g. Vault) then you need to implement rotation
+    yourself. Note: This feature also requires the RotateKubeletClientCertificate
+    feature gate to be enabled.'
+  - 'Remediation Method 1: If modifying the Kubelet config file, edit the kubelet-config.json
+    file /etc/kubernetes/kubelet/kubelet-config.json and set the below parameter to
+    true "RotateCertificate":true Additionally, ensure that the kubelet service file
+    /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf does not set the --
+    RotateCertificate executable argument to false because this would override the
+    Kubelet config file. Remediation Method 2: If using executable arguments, edit
+    the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    on each worker node and add the below parameter at the end of the KUBELET_ARGS
+    variable string. --RotateCertificate=true'
+the_rotatekubeletservercertificate_argument_is_set_to_true:
+  name: the_rotatekubeletservercertificate_argument_is_set_to_true
+  requirements:
+  - Ensure that the RotateKubeletServerCertificate argument is set to true.
+  - Enable kubelet server certificate rotation.
+  - 'RotateKubeletServerCertificate causes the kubelet to both request a serving certificate
+    after bootstrapping its client credentials and rotate the certificate as its existing
+    credentials expire. This automated periodic rotation ensures that the there are
+    no downtimes due to expired certificates and thus addressing availability in the
+    CIA (Confidentiality, Integrity, and Availability) security triad. Note: This
+    recommendation only applies if you let kubelets get their certificates from the
+    API server. In case your kubelet certificates come from an outside authority/tool
+    (e.g. Vault) then you need to implement rotation yourself.'
+  - 'Remediation Method 1: If modifying the Kubelet config file, edit the kubelet-config.json
+    file /etc/kubernetes/kubelet/kubelet-config.json and set the below parameter to
+    true "featureGates": { "RotateKubeletServerCertificate":true }, Additionally,
+    ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    does not set the --rotate-kubelet-server-certificate executable argument to false
+    because this would override the Kubelet config file. Remediation Method 2: If
+    using executable arguments, edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    on each worker node and add the below parameter at the end of the KUBELET_ARGS.'
+the_streaming_connection_idle_timeout_argument_is_not_set_to_0:
+  name: the_streaming_connection_idle_timeout_argument_is_not_set_to_0
+  requirements:
+  - Ensure that the --streaming-connection-idle-timeout argument is not set to 0.
+  - Do not disable timeouts on streaming connections.
+  - 'Setting idle timeouts ensures that you are protected against Denial-of-Service
+    attacks, inactive connections and running out of ephemeral ports. Note: By default,
+    --streaming-connection-idle-timeout is set to 4 hours which might be too high
+    for your environment. Setting this as appropriate would additionally ensure that
+    such streaming connections are timed out after serving legitimate use cases.'
+  - 'Remediation Method 1: If modifying the Kubelet config file, edit the kubelet-config.json
+    file /etc/kubernetes/kubelet/kubelet-config.json and set the below parameter to
+    a non-zero value in the format of #h#m#s "streamingConnectionIdleTimeout": "4h0m0s"
+    You should ensure that the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    does not specify a --streaming-connection-idle-timeout argument because it would
+    override the Kubelet config file. Remediation Method 2: If using executable arguments,
+    edit the kubelet service file /etc/systemd/system/kubelet.service.d/10-kubelet-args.conf
+    on each worker node and add the below parameter at the end of the KUBELET_ARGS.'
+use_of_the_bind_impersonate_and_escalate_permissions_in_the_kubernetes_cluster:
+  name: use_of_the_bind_impersonate_and_escalate_permissions_in_the_kubernetes_cluster
+  requirements:
+  - Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes
+    cluster.
+  - Cluster roles and roles with the impersonate, bind or escalate permissions should
+    not be granted unless strictly required. Each of these permissions allow a particular
+    subject to escalate their privileges beyond those explicitly granted by cluster
+    administrators
+  - The impersonate privilege allows a subject to impersonate other users gaining
+    their rights to the cluster. The bind privilege allows the subject to add a binding
+    to a cluster role or role which escalates their effective permissions in the cluster.
+    The escalate privilege allows a subject to modify cluster roles to which they
+    are bound, increasing their rights to that level. Each of these permissions has
+    the potential to allow for privilege escalation to cluster- admin level.
+  - Where possible, remove the impersonate, bind and escalate rights from subjects.
+user_access_to_amazon_ecr:
+  name: user_access_to_amazon_ecr
+  requirements:
+  - Minimize user access to Amazon ECR.
+  - Restrict user access to Amazon ECR, limiting interaction with build images to
+    only authorized personnel and service accounts.
+  - Weak access control to Amazon ECR may allow malicious users to replace built images
+    with vulnerable containers.
+  - Before you use IAM to manage access to Amazon ECR, you should understand what
+    IAM features are available to use with Amazon ECR. To get a high-level view of
+    how Amazon ECR and other AWS services work with IAM, see AWS Services That Work
+    with IAM in the IAM User Guide. Topics Amazon ECR Identity-Based Policies Amazon
+    ECR Resource-Based Policies Authorization Based on Amazon ECR Tags Amazon ECR
+    IAM Roles Page 116 Internal Only - General Amazon ECR Identity-Based Policies
+    With IAM identity-based policies, you can specify allowed or denied actions and
+    resources as well as the conditions under which actions are allowed or denied.
+    Amazon ECR supports specific actions, resources, and condition.
+using_dedicated_eks_service_accounts:
+  name: using_dedicated_eks_service_accounts
+  requirements:
+  - Prefer using dedicated EKS Service Accounts.
+  - Kubernetes workloads should not use cluster node service accounts to authenticate
+    to Amazon EKS APIs. Each Kubernetes workload that needs to authenticate to other
+    AWS services using AWS IAM should be provisioned with a dedicated Service account.
+  - 'Manual approaches for authenticating Kubernetes workloads running on Amazon EKS
+    against AWS APIs are: storing service account keys as a Kubernetes secret (which
+    introduces manual key rotation and potential for key compromise); or use of the
+    underlying nodes'' IAM Service account, which violates the principle of least
+    privilege on a multi-tenanted node, when one pod needs to have access to a service,
+    but every other pod on the node that uses the Service account does not.'
+  - With IAM roles for service accounts on Amazon EKS clusters, you can associate
+    an IAM role with a Kubernetes service account. This service account can then provide
+    AWS permissions to the containers in any pod that uses that service account. With
+    this feature, you no longer need to provide extended permissions to the worker
+    node IAM role so that pods on that node can call AWS APIs. Applications must sign
+    their AWS API requests with AWS credentials. This feature provides a strategy
+    for managing credentials for your applications, similar to the way that Amazon
+    EC2 instance profiles provide credentials to Amazon EC2 instances. Instead of
+    creating and distributing your AWS credentials to the.
+using_secrets_as_files_over_secrets_as_environment_variables:
+  name: using_secrets_as_files_over_secrets_as_environment_variables
+  requirements:
+  - Prefer using secrets as files over secrets as environment variables.
+  - Kubernetes supports mounting secrets as data volumes or as environment variables.
+    Minimize the use of environment variable secrets.
+  - It is reasonably common for application code to log out its environment (particularly
+    in the event of an error). This will include any secret values passed in as environment
+    variables, so secrets can easily be exposed to any user or entity who has access
+    to the logs.
+  - If possible, rewrite application code to read secrets from mounted secret files,
+    rather than from environment variables.
+wildcard_use_in_roles_and_clusterroles:
+  name: wildcard_use_in_roles_and_clusterroles
+  requirements:
+  - Minimize wildcard use in Roles and ClusterRoles.
+  - Kubernetes Roles and ClusterRoles provide access to resources based on sets of
+    objects and actions that can be taken on those objects. It is possible to set
+    either of these to be the wildcard "*" which matches all items. Use of wildcards
+    is not optimal from a security perspective as it may allow for inadvertent access
+    to be granted when new resources are added to the Kubernetes API either as CRDs
+    or in later versions of the product.
+  - The principle of least privilege recommends that users are provided only the access
+    required for their role and nothing more. The use of wildcard rights grants is
+    likely to provide excessive rights to the Kubernetes API.
+  - Where possible replace any use of wildcards in clusterroles and roles with specific
+    objects or actions.
