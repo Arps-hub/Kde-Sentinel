@@ -68,6 +68,20 @@ _STOPWORDS = {
     "only", "been", "being", "was", "were", "do", "does", "did",
 }
 
+_TRUNCATED_TAIL_RE = re.compile(
+    r"\b(?:to|be|and|or|with|for|of|in|on|by|from|as|related|including|based|regarding)\.?$",
+    re.IGNORECASE,
+)
+
+_LEAKAGE_PREFIXES = (
+    "final answer",
+    "requirements for",
+    "llm name",
+    "prompt used",
+    "prompt type",
+    "llm output",
+)
+
 _MODEL_ID = "google/gemma-3-1b-it"
 
 _pipeline = None  # module-level lazy singleton
@@ -303,6 +317,47 @@ def _parse_requirements_from_output(raw: str) -> list:
     return reqs
 
 
+def _sanitize_requirement_text(requirement: str) -> str | None:
+    """Return cleaned requirement text, or None if it is malformed/noise.
+
+    This removes prompt-leakage tokens (e.g. "Final Answer"), pure-number
+    list debris, and visibly truncated sentence fragments.
+    """
+    req = _clean_text(requirement).strip("'\" ")
+    if not req:
+        return None
+
+    lower = req.lower().strip()
+    if lower in {"none", "n/a", "na"}:
+        return None
+    if any(lower.startswith(prefix) for prefix in _LEAKAGE_PREFIXES):
+        return None
+    if re.fullmatch(r"\d+[\.]?", lower):
+        return None
+    if re.fullmatch(r"[\W_]+", lower):
+        return None
+    if len(req) < 12:
+        return None
+    if not re.search(r"[.!?]$", req) and len(req.split()) <= 6:
+        return None
+    if req.endswith(":"):
+        return None
+    if _TRUNCATED_TAIL_RE.search(req):
+        return None
+    if re.search(r"\b(final answer|step \d+|requirements for)\b", lower):
+        return None
+    if not re.search(r"[a-zA-Z]", req):
+        return None
+    return req
+
+
+def _canonical_requirement_key(requirement: str) -> str:
+    """Build a stable dedup key that ignores punctuation/casing differences."""
+    key = re.sub(r"[^a-z0-9]+", " ", requirement.lower())
+    key = re.sub(r"\s+", " ", key).strip()
+    return key
+
+
 def _clean_text(text: str) -> str:
     """Normalize whitespace and common PDF extraction artifacts."""
     text = text.replace("\u00a0", " ")
@@ -489,6 +544,13 @@ def _chunk_matches_kde(chunk: str, kde_name: str) -> bool:
     return any(kw in lower for kw in keywords)
 
 
+def _requirement_matches_kde(requirement: str, kde_name: str) -> bool:
+    """Keep requirements that mention the KDE or one of its stemmed hints."""
+    lower = requirement.lower()
+    keywords = _KDE_KEYWORDS.get(kde_name, [kde_name.replace("_", " ")])
+    return any(kw in lower for kw in keywords)
+
+
 def _content_words(text: str) -> set:
     """Return lowercase content words (3+ letters, non-stopword) for grounding checks."""
     words = re.findall(r"[a-zA-Z]{3,}", text.lower())
@@ -567,9 +629,14 @@ def extract_kdes(text: str, prompt_fn: Callable[[str, str], str]) -> dict:
                 parsed = []
 
             for req in parsed:
+                req = _sanitize_requirement_text(req)
+                if not req:
+                    continue
+                if not _requirement_matches_kde(req, kde_name):
+                    continue
                 if not _grounded(req, chunk):
                     continue
-                key = req.strip().lower()
+                key = _canonical_requirement_key(req)
                 if key in seen:
                     continue
                 seen.add(key)

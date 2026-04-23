@@ -1,0 +1,308 @@
+access_control,Access to
+access_control,Access to the CIS Amazon Elastic Kubernetes Service (EKS) is limited to the specific roles assigned to the user.
+access_control,Access to the CIS Amazon Elastic Kubernetes Service (EKS) should
+access_control,Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based on a role-based access control (RBAC) system.
+access_control,Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted through a secure authentication mechanism.
+access_control,Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be limited to the specific roles assigned to the user.
+access_control,Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be restricted to authorized personnel only.
+access_control,The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from within the internal network.
+access_control,The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized personnel.
+authentication,The system must authenticate users based on their role.
+authentication,The system must authenticate users before granting access to the EKS cluster.
+authentication,The system must authenticate users before granting access to the internal network.
+authentication,The system must be able
+authentication,The system must be able to authenticate users based on their IP address.
+authentication,The system must be able to authenticate users based on their device fingerprint.
+authentication,The system must be able to authenticate users based on their device.
+authentication,The system must be able to authenticate users based on their email address.
+authentication,The system must be able to authenticate users based on their group membership.
+authentication,The system must be able to authenticate users based on their location.
+authentication,The system must be able to authenticate users based on their password.
+authentication,The system must be able to authenticate users based on their role.
+authentication,The system must be able to authenticate users based on their session ID.
+authentication,The system must be able to authenticate users based on their time of day.
+authentication,The system must be able to detect and respond to suspicious activity.
+authentication,The system must ensure that authentication is performed in a secure manner.
+authentication,The system must prevent brute force attacks.
+authentication,The system must prevent the use of compromised credentials.
+authentication,The system must prevent the use of stolen credentials.
+authentication,The system must prevent unauthorized access to the EKS cluster.
+authentication,The system must prevent unauthorized access to the internal network.
+authentication,The system must provide a mechanism for
+authentication,The system must provide a mechanism for auditing access.
+authentication,The system must provide a mechanism for user account termination.
+authentication,The system must provide a mechanism for user feedback.
+authentication,The system must provide a mechanism for user profile management.
+authentication,The system must require a minimum password length.
+authentication,The system must require a password reset.
+authentication,The system must require a user to be logged in before accessing sensitive data.
+authentication,The system must require a user to be logged in before accessing the system.
+authentication,The system must require a username and password for authentication.
+authentication,The system must require a username and password.
+authentication,The system must require a valid IP address.
+authentication,The system must require a valid certificate.
+authentication,The system must require a valid email address.
+authentication,The system must support a dynamic IP address.
+authentication,The system must support a secure communication channel.
+authentication,The system must support a secure storage of user data.
+authentication,The system must support a single sign-on (SSO) protocol.
+authentication,The system must support multi-factor authentication.
+authentication,The system must support multiple authentication methods.
+authentication,The system must verify the identity of users attempting to access the EKS cluster.
+authentication,The system must verify the identity of users.
+authorization,35
+authorization,Access to CIS Bench
+authorization,Access to CIS Benchmarks is revoked upon termination of employment.
+authorization,Authorization is based on a defined policy.
+authorization,Authorization is based on a defined role.
+authorization,Authorization is granted by CIS Legal.
+authorization,Authorization is not allowed to be delegated to non-authorized personnel.
+authorization,Authorization is not allowed to be used for automated processes.
+authorization,Authorization is not allowed to be used for external access.
+authorization,Authorization is not allowed to be used for privilege escalation.
+authorization,Authorization is required for all actions involving CIS Benchmarks.
+authorization,Authorization is required for all users to access the CIS Benchmarks.
+authorization,Authorization is required for all users to access the CIS EKS service.
+authorization,Authorization is revoked if a user's account is compromised.
+authorization,Users must adhere to the terms of use.
+authorization,Users must be able to request remediation for issues with a benchmark.
+authorization,Users must not host CIS Benchmarks on a 3rd party site.
+authorization,Users must verify the version of a benchmark before accessing it.
+data_protection,Comply with relevant regulations.
+data_protection,Data should be encrypted at rest and in transit.
+data_protection,Define data classification levels.
+data_protection,Encrypt data at rest and in transit.
+data_protection,Ensure compliance with relevant regulations (e.g., GDPR, CCPA).
+data_protection,Ensure compliance with the CIS Benchmarks.
+data_protection,Ensure data privacy is maintained.
+data_protection,Establish a data retention policy.
+data_protection,Establish a process for data deletion.
+data_protection,FINAL ANSWER: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+data_protection,FINAL ANSWER: 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+data_protection,Implement a data backup and recovery plan.
+data_protection,Implement a data loss prevention (DLP) strategy.
+data_protection,Implement a data retention policy.
+data_protection,Implement a robust access control mechanism.
+data_protection,Implement a secure communication channel.
+data_protection,Implement multi-factor authentication (MFA) for access to sensitive data.
+data_protection,Maintain a comprehensive data inventory.
+data_protection,Maintain a data backup and recovery plan.
+data_protection,Monitor data access and activity.
+data_protection,Monitor data usage patterns.
+data_protection,Protect sensitive data from unauthorized access.
+data_protection,Provide data access controls.
+data_protection,Regularly audit data access logs.
+data_protection,Regularly audit data security controls.
+data_protection,Securely dispose of data.
+data_protection,Securely store data in a secure location.
+encryption,The
+encryption,The CIS Amazon Elastic Kubernetes Service (
+encryption,The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure container runtime.
+encryption,The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure key.
+encryption,The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted with a key.
+encryption,The CIS Amazon Elastic Kubernetes Service (EKS) must protect data at rest.
+logging_and_monitoring,3
+logging_and_monitoring,The system must log all data generated by the benchmark.
+logging_and_monitoring,The system must log all data received during benchmark processing.
+logging_and_monitoring,The system must log all security-related events.
+logging_and_monitoring,The system must log all user activity related to the benchmark.
+logging_and_monitoring,The system must log the benchmark's access control list.
+logging_and_monitoring,The system must log the benchmark's audit trail.
+logging_and_monitoring,The system must log the benchmark's command line arguments.
+logging_and_monitoring,The system must log the benchmark's configuration changes.
+logging_and_monitoring,The system must log the benchmark's data retention
+logging_and_monitoring,The system must log the benchmark's data retention policy.
+logging_and_monitoring,The system must log the benchmark's date and time of execution.
+logging_and_monitoring,The system must log the benchmark's dependencies.
+logging_and_monitoring,The system must log the benchmark's environment variables.
+logging_and_monitoring,The system must log the benchmark's error rate.
+logging_and_monitoring,The system must log the benchmark's failure rate.
+logging_and_monitoring,The system must log the benchmark's health status.
+logging_and_monitoring,The system must log the benchmark's performance metrics.
+logging_and_monitoring,The system must log the benchmark's performance.
+logging_and_monitoring,The system must log the benchmark's process ID.
+logging_and_monitoring,The system must log the benchmark's resource usage.
+logging_and_monitoring,The system must log the benchmark's security events.
+logging_and_monitoring,The system must log the benchmark's service status.
+logging_and_monitoring,The system must log the benchmark's system logs.
+logging_and_monitoring,The system must log the benchmark's version number.
+logging_and_monitoring,The system must log the configuration of the benchmark.
+logging_and_monitoring,The system must log the data from the benchmark.
+logging_and_monitoring,The system must log the results of the benchmark.
+logging_and_monitoring,The system must log the status of the benchmark.
+logging_and_monitoring,The system must monitor the benchmark's logs.
+logging_and_monitoring,The system must monitor the benchmark's network traffic.
+logging_and_monitoring,The system must monitor the benchmark's response time.
+logging_and_monitoring,The system must monitor the benchmark's status.
+logging_and_monitoring,The system must monitor the health of the Kubernetes cluster.
+logging_and_monitoring,The system must monitor the health of the benchmark server.
+logging_and_monitoring,The system must monitor the logs for anomalies.
+logging_and_monitoring,The system must monitor the logs for changes.
+logging_and_monitoring,The system must monitor the logs for errors.
+logging_and_monitoring,The system must monitor the logs for suspicious activity.
+logging_and_monitoring,The system must monitor the logs for the benchmark.
+logging_and_monitoring,The system must monitor the network traffic associated with the benchmark.
+logging_and_monitoring,The system must monitor the status of the benchmark.
+network_security,Automate security tasks.
+network_security,Configure DNSSEC.
+network_security,Configure firewall rules to restrict access.
+network_security,Configure network monitoring.
+network_security,Configure network security policies.
+network_security,Disable unnecessary services.
+network_security,Ensure data encryption in transit and at rest.
+network_security,Ensure data integrity.
+network_security,Ensure network connectivity to all required resources.
+network_security,Ensure the network is isolated from other networks.
+network_security,Establish a clear incident response plan.
+network_security,Final Answer:
+network_security,Implement a VPN.
+network_security,Implement a firewall.
+network_security,Implement a logging and monitoring solution.
+network_security,Implement a policy-based access control.
+network_security,Implement a secure backup and recovery plan.
+network_security,Implement a secure communication channel.
+network_security,Implement a secure container registry.
+network_security,Implement a secure logging system.
+network_security,Implement a threat intelligence feed.
+network_security,Implement a vulnerability management program.
+network_security,Implement multi-factor authentication (MFA) for all users.
+network_security,Maintain a secure configuration of AWS EKS.
+network_security,Maintain a secure configuration.
+network_security,Maintain a secure environment for the EKS cluster.
+network_security,Monitor network performance.
+network_security,Protect against malware and ransomware.
+network_security,Protect against phishing attacks.
+network_security,Protect against unauthorized access.
+network_security,Provide training to users on security best practices.
+network_security,Regularly audit network security configurations.
+network_security,Regularly audit network security.
+network_security,Review and update network security policies.
+network_security,Review and update the CIS Benchmarks.
+network_security,Verify the integrity
+network_security,Verify the integrity of the CIS Benchmark.
+network_security,Verify the integrity of the benchmark.
+network_security,Verify the source of all information.
+patch_management,Address vulnerabilities identified by the
+patch_management,Address vulnerabilities identified by the benchmark.
+patch_management,Automate patch deployment.
+patch_management,Automate the patching process.
+patch_management,Consider the impact of patch deployment on existing services.
+patch_management,Consider the impact of patch deployment on network
+patch_management,Consider the impact of patch deployment on network bandwidth.
+patch_management,Define a process for communicating with stakeholders about patch updates.
+patch_management,Define a process for handling failed patches.
+patch_management,Define a process for identifying and mitigating vulnerabilities.
+patch_management,Define a process for managing patch updates.
+patch_management,Define a process for prioritizing patches based on risk.
+patch_management,Define the scope of patch management.
+patch_management,Ensure that patches are compatible with the target Kubernetes version.
+patch_management,Ensure that the patch is applied to all affected
+patch_management,Ensure that the patch is compatible with the
+patch_management,Ensure that the patch management system is accessible to all relevant personnel.
+patch_management,Ensure that the patch management system is scalable.
+patch_management,Ensure that the patch management system is secure.
+patch_management,Ensure that the patch repository is secure.
+patch_management,Establish a patch approval workflow.
+patch_management,Establish a process for patching vulnerabilities.
+patch_management,Establish a process for verifying the integrity of patches.
+patch_management,Implement a mechanism for updating the patch repository.
+patch_management,Implement a patch distribution mechanism.
+patch_management,Implement a patch management process.
+patch_management,Implement a patch management tool.
+patch_management,Implement a process for automating patch deployment.
+patch_management,Implement a process for communicating with stakeholders about patch updates.
+patch_management,Implement a process for handling security incidents related to patches.
+patch_management,Implement a process for identifying and mitigating vulnerabilities.
+patch_management,Implement a process for managing patch dependencies.
+patch_management,Implement a process for managing patch updates.
+patch_management,Implement a process for regularly patching Kubernetes components.
+patch_management,Implement a process for reverting patches.
+patch_management,Kubernetes Service (EKS) benchmark.
+patch_management,Maintain a record of all patches applied to Kubernetes.
+patch_management,Maintain a record of patch versions.
+patch_management,Monitor the patch deployment status.
+patch_management,Monitor the patch deployment.
+patch_management,Monitor the patch management system for compliance.
+patch_management,Monitor the patching process for errors.
+patch_management,Notify stakeholders about the patch.
+patch_management,Regularly update the CIS Amazon Elastic
+patch_management,Review the patch management process.
+patch_management,Test patch deployment in a non-production environment.
+patch_management,Test the patch in a non-production environment.
+patch_management,Verify the integrity of the patch.
+patch_management,benchmark.
+patch_management,existing infrastructure.
+patch_management,systems.
+privileged_access,32.
+privileged_access,Access to the CIS Amazon Elastic Kubernetes Service (EKS) is restricted to authorized personnel only.
+privileged_access,Access to the privileged_access resource is restricted to authorized personnel only.
+privileged_access,All privileged access requests must be logged and monitored.
+privileged_access,All privileged_access requests must be logged and monitored.
+privileged_access,The access control policy must be accessible to authorized personnel.
+privileged_access,The access control policy must be documented.
+privileged_access,The access control policy must be implemented in a manner that complies with all applicable regulations.
+privileged_access,The access control policy must be reviewed and updated regularly.
+privileged_access,The access control policy must be reviewed and updated.
+privileged_access,The privileged_access
+privileged_access,The privileged_access resource must be accessible only through a defined and approved method.
+privileged_access,The privileged_access resource must be accessible only to authorized personnel.
+privileged_access,The privileged_access resource must be isolated from other systems.
+privileged_access,The privileged_access resource must be protected against data loss.
+privileged_access,The privileged_access resource must be protected against malicious activity.
+privileged_access,The privileged_access resource must be protected against unauthorized access.
+privileged_access,The privileged_access resource must be protected by a strong authentication mechanism.
+privileged_access,The privileged_access resource must be regularly audited.
+vulnerability_management,35.
+vulnerability_management,Define and document the risk assessment process.
+vulnerability_management,Define and document the roles and responsibilities for vulnerability management.
+vulnerability_management,Define and document the scope of vulnerability management.
+vulnerability_management,Define and document vulnerability response procedures.
+vulnerability_management,Document the vulnerability management process.
+vulnerability_management,Ensure compliance with relevant regulations.
+vulnerability_management,Ensure that all systems are accessible to authorized users.
+vulnerability_management,Ensure that all systems are compliant with relevant regulations.
+vulnerability_management,Ensure that all systems are patched with the latest security updates.
+vulnerability_management,Ensure that the EKS cluster is protected from unauthorized access.
+vulnerability_management,Ensure the security of the vulnerability management system.
+vulnerability_management,Establish a process for communicating vulnerability information.
+vulnerability_management,Establish a process for handling exceptions.
+vulnerability_management,Establish a process for identifying and documenting vulnerabilities.
+vulnerability_management,Establish a process for remediating vulnerabilities.
+vulnerability_management,Establish a process for reporting vulnerabilities to stakeholders.
+vulnerability_management,Establish a process for reviewing and updating vulnerability management policies.
+vulnerability_management,Implement a patch management process.
+vulnerability_management,Implement a process for
+vulnerability_management,Implement a process for handling exceptions to the terms of use.
+vulnerability_management,Implement a process for handling exceptions.
+vulnerability_management,Implement a process for handling security incidents.
+vulnerability_management,Implement a process for handling vulnerabilities in the context of containerization.
+vulnerability_management,Implement a process for identifying and prioritizing vulnerabilities.
+vulnerability_management,Implement a process for managing and prioritizing vulnerabilities.
+vulnerability_management,Implement a process for managing and tracking remediation efforts.
+vulnerability_management,Implement a process for managing and tracking the lifecycle of vulnerabilities.
+vulnerability_management,Implement a process for managing and tracking the use of CIS Benchmarks.
+vulnerability_management,Implement a process for managing and tracking the use of cloud provider services.
+vulnerability_management,Implement a process for managing vulnerabilities in a hybrid environment.
+vulnerability_management,Implement a process for managing vulnerabilities in a multi-cloud environment.
+vulnerability_management,Implement a process for managing vulnerabilities in on-premise environments.
+vulnerability_management,Implement a process for managing vulnerabilities in the cloud.
+vulnerability_management,Implement a process for managing vulnerabilities in the context of CI/CD.
+vulnerability_management,Implement a process for managing vulnerabilities in the context of DevOps.
+vulnerability_management,Implement a process for managing vulnerabilities in the context of SRE.
+vulnerability_management,Implement a process for regularly scanning vulnerabilities in the EKS cluster.
+vulnerability_management,Implement a process for remediating vulnerabilities.
+vulnerability_management,Implement a vulnerability scanning process.
+vulnerability_management,Maintain a record of all vulnerabilities discovered.
+vulnerability_management,Maintain a secure environment for vulnerability management.
+vulnerability_management,Maintain a vulnerability database.
+vulnerability_management,Maintain a vulnerability management plan.
+vulnerability_management,Monitor the EKS cluster for security events.
+vulnerability_management,Monitor the EKS cluster for suspicious activity.
+vulnerability_management,Monitor the effectiveness of vulnerability management.
+vulnerability_management,Provide a mechanism for accessing vulnerability information.
+vulnerability_management,Provide a mechanism for users to report vulnerabilities.
+vulnerability_management,Provide support for vulnerability management.
+vulnerability_management,Provide training on vulnerability management.
+vulnerability_management,Provide training to personnel on vulnerability management.
+vulnerability_management,Regularly monitor vulnerability reports.
+vulnerability_management,Test vulnerability management processes.

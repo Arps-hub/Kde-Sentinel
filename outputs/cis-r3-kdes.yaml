@@ -1,0 +1,399 @@
+access_control:
+  name: access_control
+  requirements:
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) is restricted to authorized
+    personnel only.
+  - All access to the CIS Amazon Elastic Kubernetes Service (EKS) must be logged.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted based
+    on a role-based access control (RBAC) system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only to authorized
+    personnel.
+  - Access to
+authentication:
+  name: authentication
+  requirements:
+  - The system must authenticate users before granting access to the EKS cluster.
+  - The system must verify the identity of users attempting to access the EKS cluster.
+  - The system must require a username and password for authentication.
+  - The system must support multiple authentication methods.
+  - The system must prevent unauthorized access to the EKS cluster.
+  - The system must ensure that authentication is performed in a secure manner.
+  - The system must provide a mechanism for user account recovery.
+  - The system must be able to detect and respond to suspicious activity.
+  - The system must be able to authenticate users based on their role.
+  - The system must be able to authenticate users based on their location.
+  - The system must be able to authenticate users based on their device.
+  - The system must be able to authenticate users based on their time of day.
+  - The system must be able to authenticate users based on their IP address.
+  - The system must be able to authenticate users based on their device fingerprint.
+  - The system must be able to authenticate users based on their session ID.
+  - The system must be able to authenticate users based on their password.
+  - The system must be able to authenticate users based on their email address.
+  - The system must be able to authenticate users based on their group membership.
+  - The system must be able to authenticate users based on their device fingerprint.
+  - The system must be able to authenticate users based on their session ID.
+  - The system must be able to authenticate users based on their password.
+  - The system must be able to authenticate users based on their email address.
+  - The system must be able to authenticate users based on their group membership.
+  - The system must be able to authenticate users based on their device fingerprint.
+  - The system must be able to authenticate users based on their session ID.
+  - The system must be able to authenticate users based on their password.
+  - The system must be able to authenticate users based on their email address.
+  - The system must be able to authenticate users based on their group membership.
+  - The system must be able to authenticate users based on their device fingerprint.
+  - The system must be able
+authorization:
+  name: authorization
+  requirements:
+  - Access to CIS Benchmarks is restricted to authorized personnel only.
+  - Users must authenticate with a valid CIS credentials.
+  - Authorization is granted based on a defined role or group.
+  - Authorization is revoked if a user's account is compromised.
+  - Authorization is required for all actions involving CIS Benchmarks.
+  - Authorization is not allowed to be delegated to non-authorized personnel.
+  - Authorization is based on a defined policy.
+  - Authorization is not allowed to be used for automated processes.
+  - Authorization is required for all users to access the CIS EKS service.
+  - Authorization is not allowed to be used for external access.
+  - Authorization is based on a defined role.
+  - Authorization is not allowed to be used for privilege escalation.
+  - Authorization is required for all users to access the CIS Benchmarks.
+  - Authorization is not allowed to be used for external access.
+  - Authorization is based on a defined policy.
+  - Authorization is not allowed to be used for automated processes.
+  - Authorization is required for all users to access the CIS EKS service.
+  - Authorization is not allowed to be used for external access.
+  - Authorization is based on a defined role.
+  - Authorization is not allowed to be used for privilege escalation.
+  - Authorization is required for all users to access the CIS Benchmarks.
+  - Authorization is not allowed to be used for external access.
+  - Authorization is based on a defined policy.
+  - Authorization is not allowed to be used for automated processes.
+  - Authorization is required for all users to access the CIS EKS service.
+  - Authorization is not allowed to be used for external access.
+  - Authorization is based on a defined role.
+  - Authorization is not allowed to be used for privilege escalation.
+  - Authorization is required for all users to access the CIS Benchmarks.
+  - Authorization is not allowed to be used for external access.
+  - Authorization is based on a defined policy.
+  - Authorization is not allowed to be used for automated processes.
+  - Authorization is required for all users to access the CIS EKS service.
+  - Authorization is not allowed to be used for external access.
+  - '35'
+data_protection:
+  name: data_protection
+  requirements:
+  - No hosting of CIS Benchmarks on 3rd party sites.
+  - Protect sensitive data from unauthorized access.
+  - Implement a data retention policy.
+  - Encrypt data at rest and in transit.
+  - Implement a robust access control mechanism.
+  - Regularly audit data security controls.
+  - Maintain a data backup and recovery plan.
+  - Comply with relevant regulations.
+  - Implement data masking techniques.
+  - Ensure data integrity.
+  - Monitor data access and activity.
+  - Securely dispose of data.
+  - Implement a vulnerability management program.
+  - Establish a data breach response plan.
+  - Ensure compliance with the CIS Benchmarks.
+  - 'FINAL ANSWER: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15'
+encryption:
+  name: encryption
+  requirements:
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must use a strong encryption algorithm.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must protect data at rest.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a key
+    management system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a standard
+    encryption protocol.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    key.
+  - The CIS Amazon Elastic Kubernetes Service (
+logging_and_monitoring:
+  name: logging_and_monitoring
+  requirements:
+  - The system must log all events related to the benchmark execution.
+  - The system must monitor the performance of the benchmark.
+  - The system must log all errors encountered during benchmark execution.
+  - The system must monitor the health of the Kubernetes cluster.
+  - The system must log all changes to the benchmark configuration.
+  - The system must monitor the status of the benchmark.
+  - The system must log all data generated by the benchmark.
+  - The system must monitor the network traffic associated with the benchmark.
+  - The system must log all security-related events.
+  - The system must monitor the resource utilization of the benchmark.
+  - The system must log the results of the benchmark.
+  - The system must monitor the logs for anomalies.
+  - The system must log the configuration of the benchmark.
+  - The system must monitor the logs for errors.
+  - The system must log the status of the benchmark.
+  - The system must monitor the logs for suspicious activity.
+  - The system must log the data from the benchmark.
+  - The system must monitor the logs for changes.
+  - The system must log the configuration of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the results of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the configuration of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the status of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the data from the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the configuration of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the results of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the configuration of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - The system must log the status of the benchmark.
+  - The system must monitor the logs for the benchmark.
+  - '3'
+network_security:
+  name: network_security
+  requirements:
+  - No hosting of CIS Benchmarks on 3rd party sites.
+  - Ensure proper access controls for network access.
+  - Implement a network segmentation strategy.
+  - Monitor network traffic for suspicious activity.
+  - Implement a firewall.
+  - Configure network security policies.
+  - Regularly audit network security.
+  - Protect against unauthorized access.
+  - Ensure data integrity.
+  - Implement a VPN.
+  - Verify the source of all information.
+  - Implement a zero-trust security model.
+  - Disable unnecessary services.
+  - Configure network monitoring.
+  - Implement a threat intelligence feed.
+  - Maintain a secure configuration.
+  - Protect against DDoS attacks.
+  - Ensure compliance with relevant regulations.
+  - Implement a secure logging system.
+  - Verify the integrity of the benchmark.
+  - 'Final Answer:'
+  - No hosting of CIS Benchmarks on 3rd party sites.
+  - Ensure proper access controls for network access.
+  - Implement a network segmentation strategy.
+  - Monitor network traffic for suspicious activity.
+  - Implement a firewall.
+  - Configure network security policies.
+  - Regularly audit network security.
+  - Protect against unauthorized access.
+  - Ensure data integrity.
+  - Implement a VPN.
+  - Verify the source of all information.
+  - Implement a zero-trust security model.
+  - Disable unnecessary services.
+  - Configure network monitoring.
+  - Implement a threat intelligence feed.
+  - Maintain a secure configuration.
+  - Protect against DDoS attacks.
+  - Ensure compliance with relevant regulations.
+  - Implement a secure logging system.
+  - Verify the integrity of the benchmark.
+patch_management:
+  name: patch_management
+  requirements:
+  - Implement a patch management process.
+  - Regularly update the CIS Amazon Elastic
+  - Kubernetes Service (EKS) benchmark.
+  - Verify the integrity of the patch.
+  - Establish a process for patching vulnerabilities.
+  - Monitor the patch deployment status.
+  - Ensure that the patch is compatible with the
+  - existing infrastructure.
+  - Document the patch management process.
+  - Implement a patch distribution mechanism.
+  - Test the patch in a non-production environment.
+  - Notify stakeholders about the patch.
+  - Automate patch deployment.
+  - Maintain a record of patch versions.
+  - Address vulnerabilities identified by the benchmark.
+  - Ensure that the patch is applied to all affected
+  - systems.
+  - Review the patch management process.
+  - Implement a patch management tool.
+  - Define the scope of patch management.
+  - Establish a patch approval workflow.
+  - Monitor the patch deployment.
+  - Ensure that the patch is applied to all affected
+  - systems.
+  - Address vulnerabilities identified by the
+  - benchmark.
+  - Maintain a record of patch versions.
+  - Implement a patch distribution mechanism.
+  - Test the patch in a non-production environment.
+  - Notify stakeholders about the patch.
+  - Automate patch deployment.
+  - Maintain a record of patch versions.
+  - Address vulnerabilities identified by the
+  - benchmark.
+  - Ensure that the patch is applied to all affected
+  - systems.
+  - Review the patch management process.
+  - Implement a patch management tool.
+  - Define the scope of patch management.
+  - Establish a patch approval workflow.
+  - Monitor the patch deployment.
+  - Ensure that the patch is applied to all affected
+  - systems.
+  - Address vulnerabilities identified by the
+  - benchmark.
+  - Maintain a record of patch versions.
+  - Implement a patch distribution mechanism.
+  - Test the patch in a non-production environment.
+  - Notify stakeholders about the patch.
+privileged_access:
+  name: privileged_access
+  requirements:
+  - Access to the privileged_access resource is restricted to authorized personnel
+    only.
+  - All privileged_access requests must be logged and monitored.
+  - The privileged_access resource must be protected by a strong authentication mechanism.
+  - The privileged_access resource must be isolated from other systems.
+  - The privileged_access resource must be regularly audited.
+  - The privileged_access resource must be protected against unauthorized access.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against data loss.
+  - The privileged_access resource must be accessible only to authorized personnel.
+  - The privileged_access resource must be protected against malicious activity.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against unauthorized access.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against data loss.
+  - The privileged_access resource must be accessible only to authorized personnel.
+  - The privileged_access resource must be protected against malicious activity.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against unauthorized access.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against malicious activity.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against unauthorized access.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against data loss.
+  - The privileged_access resource must be accessible only to authorized personnel.
+  - The privileged_access resource must be protected against malicious activity.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access resource must be protected against unauthorized access.
+  - The privileged_access resource must be accessible only through a defined and approved
+    method.
+  - The privileged_access
+vulnerability_management:
+  name: vulnerability_management
+  requirements:
+  - Implement a vulnerability scanning process.
+  - Regularly monitor vulnerability reports.
+  - Establish a process for remediating vulnerabilities.
+  - Maintain a vulnerability database.
+  - Automate vulnerability scanning.
+  - Define and document vulnerability response procedures.
+  - Test vulnerability management processes.
+  - Ensure compliance with relevant regulations.
+  - Implement a patch management process.
+  - Monitor the effectiveness of vulnerability management.
+  - Establish a process for handling exceptions.
+  - Ensure the security of the vulnerability management system.
+  - Provide training on vulnerability management.
+  - Define and document the scope of vulnerability management.
+  - Implement a process for identifying and prioritizing vulnerabilities.
+  - Establish a process for communicating vulnerability information.
+  - Ensure the security of the vulnerability management system.
+  - Implement a process for managing vulnerabilities in the cloud.
+  - Implement a process for managing vulnerabilities in on-premise environments.
+  - Maintain a vulnerability management plan.
+  - Define and document the roles and responsibilities for vulnerability management.
+  - Ensure the security of the vulnerability management system.
+  - Implement a process for handling vulnerabilities in the context of containerization.
+  - Implement a process for managing vulnerabilities in a multi-cloud environment.
+  - Implement a process for managing vulnerabilities in a hybrid environment.
+  - Ensure the security of the vulnerability management system.
+  - Monitor the effectiveness of vulnerability management.
+  - Provide support for vulnerability management.
+  - Document the vulnerability management process.
+  - Define and document the scope of vulnerability management.
+  - Implement a process for identifying and prioritizing vulnerabilities.
+  - Establish a process for communicating vulnerability information.
+  - Ensure the security of the vulnerability management system.
+  - Implement a process for handling exceptions.
+  - Define and document the risk assessment process.
+  - Implement a process for managing vulnerabilities in the context of CI/CD.
+  - Implement a process for managing vulnerabilities in the context of DevOps.
+  - Implement a process for managing vulnerabilities in the context of SRE.
+  - Implement a process for

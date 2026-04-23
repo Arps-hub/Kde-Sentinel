@@ -1,0 +1,381 @@
+access_control:
+  name: access_control
+  requirements:
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) is restricted to authorized
+    personnel only.
+  - All access to the CIS Amazon Elastic Kubernetes Service (EKS) must be logged.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) is limited to the specific
+    roles assigned to the user.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted through
+    a secure authentication mechanism.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from
+    within the internal network.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be restricted
+    to authorized personnel only.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from
+    within the internal network.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be limited to
+    the specific roles assigned to the user.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted through
+    a secure authentication mechanism.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from
+    within the internal network.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be restricted
+    to authorized personnel only.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from
+    within the internal network.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be limited to
+    the specific roles assigned to the user.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted through
+    a secure authentication mechanism.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from
+    within the internal network.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be restricted
+    to authorized personnel only.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from
+    within the internal network.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be limited to
+    the specific roles assigned to the user.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should be granted through
+    a secure authentication mechanism.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) should be accessible only from
+    within the internal network.
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) should
+authentication:
+  name: authentication
+  requirements:
+  - The system must authenticate users before granting access to the internal network.
+  - The system must verify the identity of users.
+  - The system must require a username and password.
+  - The system must support multi-factor authentication.
+  - The system must require a valid email address.
+  - The system must require a valid IP address.
+  - The system must require a valid certificate.
+  - The system must authenticate users based on their role.
+  - The system must require a password reset.
+  - The system must prevent unauthorized access to the internal network.
+  - The system must provide a mechanism for user account recovery.
+  - The system must support a single sign-on (SSO) protocol.
+  - The system must require a minimum password length.
+  - The system must prevent brute force attacks.
+  - The system must provide a mechanism for auditing access.
+  - The system must support a dynamic IP address.
+  - The system must require a user to be logged in before accessing sensitive data.
+  - The system must prevent the use of stolen credentials.
+  - The system must provide a mechanism for user profile management.
+  - The system must support a secure communication channel.
+  - The system must require a user to be logged in before accessing the system.
+  - The system must prevent the use of compromised credentials.
+  - The system must provide a mechanism for user feedback.
+  - The system must support a secure storage of user data.
+  - The system must require a user to be logged in before accessing the system.
+  - The system must prevent the use of compromised credentials.
+  - The system must provide a mechanism for user account termination.
+  - The system must support a secure communication channel.
+  - The system must require a user to be logged in before accessing the system.
+  - The system must prevent the use of compromised credentials.
+  - The system must provide a mechanism for user profile management.
+  - The system must support a secure storage of user data.
+  - The system must require a user to be logged in before accessing the system.
+  - The system must prevent the use of compromised credentials.
+  - The system must provide a mechanism for
+authorization:
+  name: authorization
+  requirements:
+  - Access to CIS Benchmarks is restricted to authorized personnel only.
+  - Users must authenticate with a valid CIS credentials.
+  - Authorization is granted based on a defined role or group.
+  - Access to CIS Benchmarks is revoked upon termination of employment.
+  - Users must adhere to the terms of use.
+  - Users must not host CIS Benchmarks on a 3rd party site.
+  - Authorization is granted by CIS Legal.
+  - Users must verify the version of a benchmark before accessing it.
+  - Users must be able to request remediation for issues with a benchmark.
+  - Access to CIS Benchmarks is restricted to authorized personnel only.
+  - Users must adhere to the terms of use.
+  - Users must not host CIS Benchmarks on a 3rd party site.
+  - Authorization is granted by CIS Legal.
+  - Users must verify the version of a benchmark before accessing it.
+  - Users must be able to request remediation for issues with a benchmark.
+  - Access to CIS Benchmarks is restricted to authorized personnel only.
+  - Users must adhere to the terms of use.
+  - Users must not host CIS Benchmarks on a 3rd party site.
+  - Authorization is granted by CIS Legal.
+  - Users must verify the version of a benchmark before accessing it.
+  - Users must be able to request remediation for issues with a benchmark.
+  - Access to CIS Benchmarks is restricted to authorized personnel only.
+  - Users must adhere to the terms of use.
+  - Users must not host CIS Benchmarks on a 3rd party site.
+  - Authorization is granted by CIS Legal.
+  - Users must verify the version of a benchmark before accessing it.
+  - Users must be able to request remediation for issues with a benchmark.
+  - Access to CIS Benchmarks is restricted to authorized personnel only.
+  - Users must adhere to the terms of use.
+  - Users must not host CIS Benchmarks on a 3rd party site.
+  - Authorization is granted by CIS Legal.
+  - Users must verify the version of a benchmark before accessing it.
+  - Users must be able to request remediation for issues with a benchmark.
+  - Access to CIS Bench
+data_protection:
+  name: data_protection
+  requirements:
+  - No hosting of CIS Benchmarks on 3rd party sites.
+  - Data should be encrypted at rest and in transit.
+  - Implement a data loss prevention (DLP) strategy.
+  - Establish a data retention policy.
+  - Regularly audit data access logs.
+  - Implement multi-factor authentication (MFA) for access to sensitive data.
+  - Ensure compliance with relevant regulations (e.g., GDPR, CCPA).
+  - Implement data masking techniques.
+  - Securely store data in a secure location.
+  - Implement a data backup and recovery plan.
+  - Define data classification levels.
+  - Establish a process for data deletion.
+  - Monitor data usage patterns.
+  - Implement a vulnerability management program.
+  - Ensure data integrity.
+  - Provide data access controls.
+  - Implement a secure communication channel.
+  - Maintain a comprehensive data inventory.
+  - Establish a data breach response plan.
+  - Ensure data privacy is maintained.
+  - 'FINAL ANSWER: 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+    20'
+encryption:
+  name: encryption
+  requirements:
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must use a strong encryption algorithm.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a key
+    management system.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a standard
+    encryption protocol.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted with a key.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted using a secure
+    container runtime.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The CIS Amazon Elastic Kubernetes Service (EKS) must be encrypted.
+  - The
+logging_and_monitoring:
+  name: logging_and_monitoring
+  requirements:
+  - The system must log all events related to the benchmark execution.
+  - The system must monitor the performance of the benchmark.
+  - The system must log all errors encountered during benchmark execution.
+  - The system must monitor the health of the benchmark server.
+  - The system must log all changes to the benchmark configuration.
+  - The system must monitor the resource utilization of the benchmark.
+  - The system must log all user activity related to the benchmark.
+  - The system must monitor the benchmark's status.
+  - The system must log the benchmark's version number.
+  - The system must log the benchmark's date and time of execution.
+  - The system must log all data received during benchmark processing.
+  - The system must monitor the benchmark's response time.
+  - The system must log the benchmark's failure rate.
+  - The system must log the benchmark's performance metrics.
+  - The system must log the benchmark's configuration changes.
+  - The system must monitor the benchmark's network traffic.
+  - The system must log the benchmark's security events.
+  - The system must monitor the benchmark's logs.
+  - The system must log the benchmark's data retention policy.
+  - The system must log the benchmark's access control list.
+  - The system must log the benchmark's audit trail.
+  - The system must log the benchmark's system logs.
+  - The system must log the benchmark's process ID.
+  - The system must log the benchmark's command line arguments.
+  - The system must log the benchmark's environment variables.
+  - The system must log the benchmark's dependencies.
+  - The system must log the benchmark's service status.
+  - The system must log the benchmark's health status.
+  - The system must log the benchmark's resource usage.
+  - The system must log the benchmark's performance.
+  - The system must log the benchmark's error rate.
+  - The system must log the benchmark's failure rate.
+  - The system must log the benchmark's security events.
+  - The system must log the benchmark's data retention
+network_security:
+  name: network_security
+  requirements:
+  - No hosting of CIS Benchmarks on 3rd party sites.
+  - Ensure proper access controls for network access.
+  - Implement a network segmentation strategy.
+  - Monitor network traffic for suspicious activity.
+  - Configure firewall rules to restrict access.
+  - Implement a vulnerability management program.
+  - Regularly audit network security configurations.
+  - Establish a clear incident response plan.
+  - Protect against DDoS attacks.
+  - Ensure data encryption in transit and at rest.
+  - Implement multi-factor authentication (MFA) for all users.
+  - Maintain a secure configuration of AWS EKS.
+  - Implement a logging and monitoring solution.
+  - Review and update network security policies.
+  - Ensure compliance with relevant regulations.
+  - Implement a zero-trust security model.
+  - Protect against malware and ransomware.
+  - Monitor network performance.
+  - Configure DNSSEC.
+  - Implement a secure container registry.
+  - Ensure network connectivity to all required resources.
+  - Verify the integrity of the CIS Benchmark.
+  - Implement a secure communication channel.
+  - Maintain a secure environment for the EKS cluster.
+  - Implement a policy-based access control.
+  - Automate security tasks.
+  - Provide training to users on security best practices.
+  - Review and update the CIS Benchmarks.
+  - Protect against phishing attacks.
+  - Ensure the network is isolated from other networks.
+  - Implement a secure backup and recovery plan.
+  - Verify the integrity of the CIS Benchmark.
+  - Implement a secure communication channel.
+  - Maintain a secure environment for the EKS cluster.
+  - Monitor network performance.
+  - Configure DNSSEC.
+  - Implement a zero-trust security model.
+  - Protect against malware and ransomware.
+  - Ensure compliance with relevant regulations.
+  - Implement a policy-based access control.
+  - Automate security tasks.
+  - Provide training to users on security best practices.
+  - Verify the integrity
+patch_management:
+  name: patch_management
+  requirements:
+  - Implement a process for regularly patching Kubernetes components.
+  - Establish a process for verifying the integrity of patches.
+  - Maintain a record of all patches applied to Kubernetes.
+  - Automate the patching process.
+  - Ensure that patches are compatible with the target Kubernetes version.
+  - Monitor the patching process for errors.
+  - Define a process for handling failed patches.
+  - Implement a mechanism for updating the patch repository.
+  - Ensure that the patch repository is secure.
+  - Document the patch management process.
+  - Test patch deployment in a non-production environment.
+  - Consider the impact of patch deployment on existing services.
+  - Implement a process for managing patch updates.
+  - Ensure that the patch management system is accessible to all relevant personnel.
+  - Define a process for identifying and mitigating vulnerabilities.
+  - Implement a process for communicating with stakeholders about patch updates.
+  - Monitor the patch management system for compliance.
+  - Implement a process for reverting patches.
+  - Consider the impact of patch deployment on network bandwidth.
+  - Ensure that the patch management system is scalable.
+  - Implement a process for managing patch dependencies.
+  - Ensure that the patch management system is secure.
+  - Implement a process for handling security incidents related to patches.
+  - Define a process for prioritizing patches based on risk.
+  - Implement a process for automating patch deployment.
+  - Ensure that the patch management system is accessible to all relevant personnel.
+  - Define a process for managing patch updates.
+  - Consider the impact of patch deployment on existing services.
+  - Implement a process for identifying and mitigating vulnerabilities.
+  - Ensure that the patch management system is scalable.
+  - Implement a process for managing patch dependencies.
+  - Ensure that the patch management system is secure.
+  - Implement a process for handling security incidents related to patches.
+  - Define a process for communicating with stakeholders about patch updates.
+  - Monitor the patch management system for compliance.
+  - Implement a process for reverting patches.
+  - Consider the impact of patch deployment on network
+privileged_access:
+  name: privileged_access
+  requirements:
+  - Access to the CIS Amazon Elastic Kubernetes Service (EKS) is restricted to authorized
+    personnel only.
+  - All privileged access requests must be logged and monitored.
+  - The access control policy must be reviewed and updated regularly.
+  - The access control policy must be implemented in a manner that complies with all
+    applicable regulations.
+  - The access control policy must be accessible to authorized personnel.
+  - The access control policy must be documented.
+  - The access control policy must be reviewed and updated.
+  - The access control policy must be implemented in a manner that complies with all
+    applicable regulations.
+  - The access control policy must be accessible to authorized personnel.
+  - The access control policy must be documented.
+  - The access control policy must be reviewed and updated.
+  - The access control policy must be implemented in a manner that complies with all
+    applicable regulations.
+  - The access control policy must be accessible to authorized personnel.
+  - The access control policy must be documented.
+  - The access control policy must be reviewed and updated.
+  - The access control policy must be implemented in a manner that complies with all
+    applicable regulations.
+  - The access control policy must be accessible to authorized personnel.
+  - The access control policy must be documented.
+  - The access control policy must be reviewed and updated.
+  - The access control policy must be implemented in a manner that complies with all
+    applicable regulations.
+  - The access control policy must be accessible to authorized personnel.
+  - The access control policy must be documented.
+  - The access control policy must be reviewed and updated.
+  - The access control policy must be implemented in a manner that complies with all
+    applicable regulations.
+  - The access control policy must be accessible to authorized personnel.
+  - The access control policy must be documented.
+  - The access control policy must be reviewed and updated.
+  - The access control policy must be implemented in a manner that complies with all
+    applicable regulations.
+  - The access control policy must be accessible to authorized personnel.
+  - The access control policy must be documented.
+  - The access control policy must be reviewed and updated.
+  - '32.'
+vulnerability_management:
+  name: vulnerability_management
+  requirements:
+  - Implement a process for regularly scanning vulnerabilities in the EKS cluster.
+  - Establish a process for identifying and documenting vulnerabilities.
+  - Implement a process for remediating vulnerabilities.
+  - Maintain a record of all vulnerabilities discovered.
+  - Ensure that all systems are patched with the latest security updates.
+  - Monitor the EKS cluster for suspicious activity.
+  - Implement a process for managing and prioritizing vulnerabilities.
+  - Automate vulnerability scanning.
+  - Establish a process for reporting vulnerabilities to stakeholders.
+  - Ensure that all systems are accessible to authorized users.
+  - Implement a process for managing and tracking remediation efforts.
+  - Maintain a secure environment for vulnerability management.
+  - Implement a process for handling exceptions to the terms of use.
+  - Ensure that all systems are compliant with relevant regulations.
+  - Implement a process for managing and tracking the lifecycle of vulnerabilities.
+  - Provide training to personnel on vulnerability management.
+  - Establish a process for reviewing and updating vulnerability management policies.
+  - Implement a process for managing and tracking the use of CIS Benchmarks.
+  - Ensure that the EKS cluster is protected from unauthorized access.
+  - Implement a process for managing and tracking the use of cloud provider services.
+  - Monitor the EKS cluster for security events.
+  - Implement a process for handling security incidents.
+  - Maintain a secure environment for vulnerability management.
+  - Implement a process for managing and tracking the use of cloud provider services.
+  - Ensure that all systems are accessible to authorized users.
+  - Implement a process for managing and tracking the lifecycle of vulnerabilities.
+  - Provide a mechanism for users to report vulnerabilities.
+  - Maintain a secure environment for vulnerability management.
+  - Implement a process for managing and tracking the use of CIS Benchmarks.
+  - Ensure that all systems are compliant with relevant regulations.
+  - Implement a process for handling exceptions to the terms of use.
+  - Provide a mechanism for accessing vulnerability information.
+  - Maintain a secure environment for vulnerability management.
+  - Implement a process for managing and tracking the use of cloud provider services.
+  - '35.'

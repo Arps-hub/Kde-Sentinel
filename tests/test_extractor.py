@@ -166,3 +166,30 @@ def test_run_extraction_writes_yaml(tmp_path):
         loaded = yaml.safe_load(f)
     assert isinstance(loaded, dict)
     assert len(loaded) > 0
+
+
+def test_parse_and_sanitize_filters_noise_lines():
+    """Reject leaked tokens, numeric debris, and truncated fragments."""
+    from src.extractor import _parse_requirements_from_output, _sanitize_requirement_text
+
+    raw = """1. The system must enforce RBAC for cluster access.
+2. FINAL ANSWER: 1, 2, 3
+3. 35
+4. The system must require
+5. Access to
+6. NONE
+"""
+
+    parsed = _parse_requirements_from_output(raw)
+    cleaned = [r for r in (_sanitize_requirement_text(x) for x in parsed) if r]
+
+    assert cleaned == ["The system must enforce RBAC for cluster access."]
+
+
+def test_requirement_dedup_key_normalizes_punctuation_and_case():
+    """Near-identical requirements should map to the same dedup key."""
+    from src.extractor import _canonical_requirement_key
+
+    a = "The system must log all security-related events."
+    b = "the system must log all security related events"
+    assert _canonical_requirement_key(a) == _canonical_requirement_key(b)
